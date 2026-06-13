@@ -1,0 +1,89 @@
+name: Zoho Writer Plans and Pricing
+description: Pricing plans and subscription tiers for Zoho Writer and its Automation Add-On
+url: https://www.zoho.com/writer/
+plans:
+  - name: Free (Included with Zoho One / WorkDrive)
+    description: Zoho Writer is included at no extra cost with Zoho One, WorkDrive, and other Zoho suite subscriptions. API access is available under the included automation credits.
+    price: 0
+    currency: USD
+    billingCycle: monthly
+    credits:
+      - tier: WorkDrive Individual/Essential
+        freeCredits: 200
+        dailyLimit: 10
+      - tier: Other integrated Zoho services
+        freeCredits: 1000
+      - tier: Zoho One users
+        freeCredits: 2000
+    features:
+      - Create, edit, and collaborate on documents
+      - Mail merge via API
+      - Document signing via API
+      - Webhook support
+      - REST API access (Document, Meta, Combine, Merge, Sign APIs)
+
+  - name: Writer Pro (Standalone)
+    description: Standalone Zoho Writer subscription for individuals and teams.
+    price: 3
+    currency: USD
+    billingCycle: monthly
+    billingNote: Billed annually
+    features:
+      - Full word processor access
+      - API access included
+      - Collaboration features
+      - Template and form support
+      - Offline desktop app
+
+  - name: Automation Add-On - Fixed Plan
+    description: Pre-purchased automation credits added to the account at the start of each billing cycle, for use with mail merge, signing, and document generation APIs.
+    billingCycle: monthly
+    tiers:
+      - credits: 500
+        priceMonthly: 25
+      - credits: 1000
+        priceMonthly: 45
+      - credits: 2000
+        priceMonthly: 85
+      - credits: 5000
+        priceMonthly: 195
+      - credits: 10000
+        priceMonthly: 370
+      - credits: 20000
+        priceMonthly: 490
+      - credits: 40000
+        priceMonthly: 610
+    features:
+      - Fixed credit allotment per billing cycle
+      - PDF, HTML, MS Word, Writer, Fillable output (1 credit each)
+      - PDF Form output (5 credits each)
+      - Daily merge limit via API: 1,000 merges/day
+
+  - name: Automation Add-On - Flexible Plan
+    description: Post-pay billing plan. Use credits first and pay at month end. Activation fee applies.
+    activationFee:
+      monthly: 1
+      yearly: 10
+    currency: USD
+    billingCycle: monthly
+    creditPricingTiers:
+      - rangeStart: 1
+        rangeEnd: 4000
+        pricePerCredit: 0.05
+      - rangeStart: 4001
+        rangeEnd: 13000
+        pricePerCredit: 0.02
+      - rangeStart: 13001
+        rangeEnd: 23000
+        pricePerCredit: 0.01
+    billingNote: Yearly flexible plan invoices generated only when accumulated charges exceed $100.
+    features:
+      - Pay-as-you-go credit model
+      - Monthly invoicing
+      - Local tax (VAT, GST) applied where applicable
+      - Max usage cap configurable to prevent bill shock
+
+notes:
+  - Zoho Writer is not sold as a standalone API product; API access is bundled with Writer subscriptions.
+  - Automation credits (for merge, sign, generate) are the primary API cost driver.
+  - Enterprise pricing available via direct sales contact.

@@ -1,0 +1,78 @@
+aid: zoho-writer
+name: Zoho Writer
+description: >
+  Zoho Writer is an online word processor with a REST API for creating, editing,
+  merging, converting, and signing documents, and automating document workflows
+  within the Zoho ecosystem. The API supports document CRUD operations, mail merge
+  with templates, fillable forms, electronic signatures via Zoho Sign integration,
+  webhook-triggered automation, and multi-format document export (PDF, DOCX, HTML).
+  OAuth 2.0 authentication is used with domain-specific base URLs across global
+  data centers.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/zoho-writer/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Documents
+  - Word Processor
+  - Mail Merge
+  - Document Generation
+  - Electronic Signatures
+  - Zoho
+  - Office Suite
+  - Automation
+apis:
+  - aid: zoho-writer:zoho-writer-api
+    name: Zoho Writer API
+    description: >
+      REST API for programmatic document creation, editing, mail merge,
+      electronic signing, webhook automation, and multi-format document export.
+      Supports Document, Meta, Combine, Merge, and Sign API categories with
+      OAuth 2.0 authentication.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.zoho.com/writer/developers.html
+    baseURL: https://writer.zoho.com/api/v1
+    tags:
+      - Documents
+      - Mail Merge
+      - Signatures
+      - Automation
+      - REST
+    properties:
+      - type: Documentation
+        url: https://www.zoho.com/writer/help/api/v1/
+      - type: Authentication
+        url: https://www.zoho.com/writer/help/api/v1/oauth-2.html
+      - type: RateLimits
+        url: https://www.zoho.com/writer/help/api/v1/writer-apis-threshold-limits.html
+      - type: Webhooks
+        url: https://www.zoho.com/writer/help/api/v1/webhooks.html
+      - type: WhatsNew
+        url: https://www.zoho.com/writer/whats-new.html
+common:
+  - type: Website
+    url: https://www.zoho.com/writer/
+  - type: Documentation
+    url: https://www.zoho.com/writer/help/api/v1/
+  - type: GitHubOrg
+    url: https://github.com/zoho
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/zoho
+  - type: Blog
+    url: https://www.zoho.com/blog/writer/
+  - type: Pricing
+    url: https://help.zoho.com/portal/en/kb/writer/writer-add-ons/pricing-faq/articles/how-can-i-purchase-the-writer-add-on
+  - type: StatusPage
+    url: https://status.zoho.com
+  - type: X
+    url: https://x.com/ZohoWriter
+  - type: Plans
+    url: plans/zoho-writer-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/zoho-writer-rate-limits.yml
+  - type: FinOps
+    url: finops/zoho-writer-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

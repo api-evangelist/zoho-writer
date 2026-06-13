@@ -1,0 +1,94 @@
+name: Zoho Writer FinOps
+description: Financial operations guidance for managing Zoho Writer API costs, credit consumption, and budget controls
+url: https://help.zoho.com/portal/en/kb/writer/automation-guide/writer-add-ons/articles/zoho-writer-automation-add-on-pricing-and-credit-usage-explained
+
+creditModel:
+  description: >
+    Zoho Writer API operations (merge, sign, generate) consume automation credits.
+    Credits are consumed per document output, not per API call. Free credits are
+    included with all Zoho subscriptions. Additional credits purchased via Fixed
+    or Flexible plans.
+  unitOfConsumption: document output
+  creditUsage:
+    - outputType: PDF
+      creditsPerDocument: 1
+    - outputType: HTML
+      creditsPerDocument: 1
+    - outputType: MS Word (.docx)
+      creditsPerDocument: 1
+    - outputType: Zoho Writer format
+      creditsPerDocument: 1
+    - outputType: Fillable document
+      creditsPerDocument: 1
+    - outputType: PDF Form
+      creditsPerDocument: 5
+
+freeCredits:
+  - plan: WorkDrive Individual/Essential
+    creditsPerMonth: 200
+    dailyLimit: 10
+  - plan: Other integrated Zoho services
+    creditsPerMonth: 1000
+  - plan: Zoho One
+    creditsPerMonth: 2000
+    note: Based on number of user licenses
+
+costOptimization:
+  strategies:
+    - name: Use free credit tier first
+      description: All Zoho plans include monthly free credits. Design workflows to stay within free allotment for low-volume use cases.
+    - name: Prefer standard output formats
+      description: PDF Forms cost 5 credits vs 1 credit for standard formats. Avoid PDF Forms unless required by the workflow.
+    - name: Use Fixed Plan for predictable workloads
+      description: If monthly credit consumption is consistent, Fixed Plans offer cost certainty vs Flexible Plan's per-credit billing.
+    - name: Use Flexible Plan for variable workloads
+      description: For seasonal or unpredictable usage, Flexible Plan avoids over-purchasing credits that expire unused.
+    - name: Set maximum cap on Flexible Plan
+      description: Configure usage caps on the Flexible Plan to prevent runaway charges from automation bugs or unexpected spikes.
+    - name: Batch merge operations
+      description: Consolidate document generation jobs to stay within API daily merge limit (1,000 via API) and avoid credit waste from retries.
+    - name: Monitor credit consumption regularly
+      description: Track credit usage against free allotment and plan thresholds to avoid overage billing surprises.
+
+tieredPricing:
+  description: Flexible Plan credits billed at end of month at tiered rates after free credits exhausted
+  tiers:
+    - range: "1 - 4,000 credits"
+      pricePerCredit: 0.05
+      monthlyCost: "Up to $200"
+    - range: "4,001 - 13,000 credits"
+      pricePerCredit: 0.02
+      monthlyCost: "Up to $180 for this tier"
+    - range: "13,001 - 23,000 credits"
+      pricePerCredit: 0.01
+      monthlyCost: "Up to $100 for this tier"
+  example:
+    monthlyCreditsUsed: 8000
+    freeCredits: 1000
+    billableCredits: 7000
+    calculation:
+      - tier1: "4,000 credits x $0.05 = $200"
+      - tier2: "3,000 credits x $0.02 = $60"
+    totalCost: "$260/month for 8,000 credits"
+
+billing:
+  taxes:
+    - type: VAT
+      applicableRegions: EU countries
+    - type: GST
+      applicableRegions: India, Australia
+    note: Local taxes applied on top of credit costs where applicable.
+  invoicing:
+    flexibleMonthly: Invoice at end of each month
+    flexibleYearly: Invoice generated when charges exceed $100
+
+alerts:
+  recommendations:
+    - Monitor Zoho Writer credit dashboard in admin console
+    - Set Flexible Plan caps to limit maximum spend per month
+    - Review credit consumption after any new automation deployment
+    - Audit merge templates to remove unused or duplicate field configurations
+
+contacts:
+  billing: support@zohowriter.com
+  enterprise: Available via Zoho direct sales for volume licensing

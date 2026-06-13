@@ -1,0 +1,103 @@
+name: Zoho Writer API Rate Limits
+description: Threshold limits and cooling periods for Zoho Writer REST API categories
+url: https://www.zoho.com/writer/help/api/v1/writer-apis-threshold-limits.html
+categories:
+
+  - name: Document APIs
+    description: Core document creation, retrieval, update, and sharing operations
+    endpoints:
+      - name: General Document Operations
+        limits:
+          perMinute: 100
+          perHour: 500
+          perDay: 2000
+        coolingPeriod:
+          perMinute: 5-6 minutes
+          perHour: 15 minutes
+          perDay: 1-2 hours
+      - name: Get Document Metrics
+        description: Highest throughput endpoint for document metadata
+        limits:
+          perMinute: 1000
+          perHour: 25000
+        coolingPeriod:
+          perMinute: 5-6 minutes
+          perHour: 15 minutes
+      - name: Get All Fields
+        limits:
+          perMinute: 100
+          perHour: 500
+          perDay: 5000
+        coolingPeriod:
+          perMinute: 5-6 minutes
+          perHour: 15 minutes
+          perDay: 1-2 hours
+
+  - name: Meta APIs
+    description: API endpoints for retrieving metadata about Writer documents and templates
+    limits:
+      perMinute: 60
+      perHour: 500
+      perDay: 2000
+    coolingPeriod:
+      perMinute: 5-6 minutes
+      perHour: 15 minutes
+      perDay: 1-2 hours
+
+  - name: Combine APIs
+    description: Endpoints for combining and merging multiple documents
+    limits:
+      perMinute: 50
+      perHour: 200
+      perDay: 2000
+    coolingPeriod:
+      perMinute: 5-6 minutes
+      perHour: 15 minutes
+      perDay: 1-2 hours
+    notes: Stricter minute and hour limits than standard Document APIs.
+
+  - name: Merge APIs
+    description: Mail merge and template-based document generation operations
+    endpoints:
+      - name: Standard Merge Operations
+        limits:
+          perMinute: 100
+          perHour: 500
+          perDay: 5000
+        coolingPeriod:
+          perMinute: 5-6 minutes
+          perHour: 15 minutes
+          perDay: 1-2 hours
+      - name: Merge and Email
+        description: Merge with automated email delivery; more restrictive daily limit
+        limits:
+          perMinute: 100
+          perHour: 500
+          perDay: 1000
+        coolingPeriod:
+          perMinute: 5-6 minutes
+          perHour: 15 minutes
+          perDay: 1-2 hours
+    operationalLimits:
+      uiMergesPerDay: 5000
+      apiMergesPerDay: 1000
+      scope: Organization-level
+
+  - name: Sign APIs
+    description: Document signing workflow integration (integrates with Zoho Sign)
+    limits:
+      perMinute: 30
+      perHour: 300
+      perDay: 1000
+    coolingPeriod:
+      perMinute: 3 seconds
+      perHour: 15 minutes
+      perDay: 1-2 hours
+    notes: Most restrictive limits across all API categories. Tightest per-minute cooling period.
+
+general:
+  notes:
+    - All limits are per organization unless otherwise specified.
+    - Cooling periods apply after a limit is reached and must elapse before additional calls are accepted.
+    - Domain-specific base URLs apply per data center (US, EU, IN, JP, AU, CA, SA, CN).
+    - Rate limit details sourced from official Zoho Writer API threshold documentation.
