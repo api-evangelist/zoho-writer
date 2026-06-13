@@ -1,0 +1,1100 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Zoho Writer API",
+    "description": "REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Zoho Writer Support",
+      "email": "support@zohowriter.com",
+      "url": "https://www.zoho.com/writer/help/api/v1/"
+    },
+    "termsOfService": "https://www.zoho.com/writer/developers.html",
+    "license": {
+      "name": "Zoho API Terms",
+      "url": "https://www.zoho.com/writer/developers.html"
+    }
+  },
+  "externalDocs": {
+    "description": "Zoho Writer API Documentation",
+    "url": "https://www.zoho.com/writer/help/api/v1/"
+  },
+  "servers": [
+    {
+      "url": "https://www.zohoapis.com/writer/api/v1",
+      "description": "United States (default)"
+    },
+    {
+      "url": "https://www.zohoapis.eu/writer/api/v1",
+      "description": "Europe"
+    },
+    {
+      "url": "https://www.zohoapis.in/writer/api/v1",
+      "description": "India"
+    },
+    {
+      "url": "https://www.zohoapis.jp/writer/api/v1",
+      "description": "Japan"
+    },
+    {
+      "url": "https://www.zohoapis.com.au/writer/api/v1",
+      "description": "Australia"
+    },
+    {
+      "url": "https://www.zohoapis.ca/writer/api/v1",
+      "description": "Canada"
+    },
+    {
+      "url": "https://www.zohoapis.sa/writer/api/v1",
+      "description": "Saudi Arabia"
+    },
+    {
+      "url": "https://www.zohoapis.com.cn/writer/api/v1",
+      "description": "China"
+    },
+    {
+      "url": "https://www.zohoapis.sg/writer/api/v1",
+      "description": "Singapore"
+    }
+  ],
+  "security": [
+    {
+      "OAuth2": [
+        "ZohoWriter.documentEditor.ALL",
+        "ZohoPC.files.ALL",
+        "WorkDrive.files.ALL"
+      ]
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "description": "OAuth 2.0 authentication. Refer to https://www.zoho.com/writer/help/api/v1/oauth-2.html for setup.",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+            "tokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+            "scopes": {
+              "ZohoWriter.documentEditor.ALL": "Full access to document editor operations",
+              "ZohoWriter.merge.ALL": "Full access to merge operations",
+              "ZohoPC.files.ALL": "Access to Zoho personal cloud files",
+              "WorkDrive.files.ALL": "Access to WorkDrive files",
+              "WorkDrive.organization.ALL": "Organization-level WorkDrive access",
+              "WorkDrive.workspace.ALL": "Workspace-level WorkDrive access"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "DocumentSummary": {
+        "type": "object",
+        "properties": {
+          "document_id": { "type": "string", "description": "Unique identifier for the document" },
+          "document_name": { "type": "string", "description": "Name of the document" },
+          "document_type": { "type": "string", "description": "Type of document" },
+          "created_time": { "type": "string", "description": "ISO 8601 creation timestamp" },
+          "modified_time": { "type": "string", "description": "ISO 8601 last-modified timestamp" },
+          "creator_id": { "type": "string", "description": "ID of the document creator" },
+          "created_by": { "type": "string", "description": "Display name of the creator" },
+          "lastmodified_by": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/UserInfo" }
+          },
+          "preview_url": { "type": "string", "format": "uri" },
+          "open_url": { "type": "string", "format": "uri" },
+          "download_url": { "type": "string", "format": "uri" },
+          "published_url": { "type": "string", "format": "uri" }
+        }
+      },
+      "DocumentDetails": {
+        "allOf": [
+          { "$ref": "#/components/schemas/DocumentSummary" },
+          {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "role": { "type": "string" },
+              "owner_id": { "type": "string" },
+              "is_published": { "type": "boolean" },
+              "is_shared": { "type": "boolean" },
+              "is_favourite": { "type": "boolean" },
+              "is_orgpublished": { "type": "boolean" },
+              "created_time_in_millisecond": { "type": "integer" },
+              "modified_time_in_millisecond": { "type": "integer" },
+              "last_opened_time": { "type": "string" },
+              "thumbnail_url": { "type": "string", "format": "uri" },
+              "permalink": { "type": "string", "format": "uri" },
+              "permissions": { "$ref": "#/components/schemas/Permissions" },
+              "parent_info": { "$ref": "#/components/schemas/ParentInfo" },
+              "library_id": { "type": "string" },
+              "collaboration_id": { "type": "string" },
+              "version": { "type": "string" },
+              "status": { "type": "string" }
+            }
+          }
+        ]
+      },
+      "UserInfo": {
+        "type": "object",
+        "properties": {
+          "email_id": { "type": "string", "format": "email" },
+          "user_id": { "type": "string" },
+          "display_name": { "type": "string" },
+          "profile_photo": { "type": "string", "format": "uri" }
+        }
+      },
+      "Permissions": {
+        "type": "object",
+        "properties": {
+          "can_edit": { "type": "boolean" },
+          "can_share": { "type": "boolean" },
+          "can_delete": { "type": "boolean" }
+        }
+      },
+      "ParentInfo": {
+        "type": "object",
+        "properties": {
+          "folder_id": { "type": "string" },
+          "folder_name": { "type": "string" }
+        }
+      },
+      "DocumentMetrics": {
+        "type": "object",
+        "properties": {
+          "comments_metrics": {
+            "type": "object",
+            "properties": {
+              "total_count": { "type": "integer" },
+              "unresolved_count": { "type": "integer" },
+              "resolved_count": { "type": "integer" }
+            }
+          },
+          "content_metrics": {
+            "type": "object",
+            "properties": {
+              "sentences": { "type": "integer" },
+              "characters": { "type": "integer" },
+              "words": { "type": "integer" },
+              "characters_without_whitespaces": { "type": "integer" }
+            }
+          },
+          "tracked_changes_metrics": {
+            "type": "object",
+            "properties": {
+              "all_changes": { "type": "integer" },
+              "insertions": { "type": "integer" },
+              "deletions": { "type": "integer" },
+              "replacements": { "type": "integer" },
+              "fields_updated": { "type": "integer" }
+            }
+          }
+        }
+      },
+      "OutputSettings": {
+        "type": "object",
+        "required": ["format"],
+        "properties": {
+          "format": {
+            "type": "string",
+            "enum": ["pdf", "pdfform", "docx", "html", "zfdoc", "zip"],
+            "description": "Output file format"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 100,
+            "description": "Optional password protection for the output document"
+          },
+          "restricted_access": {
+            "type": "object",
+            "properties": {
+              "password": { "type": "string" },
+              "permissions": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      },
+      "MergeResponse": {
+        "type": "object",
+        "properties": {
+          "merge_report_data_url": { "type": "string", "format": "uri" },
+          "merge_report_url": { "type": "string", "format": "uri" },
+          "status": { "type": "string", "enum": ["inprogress", "completed", "failed"] },
+          "records": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/MergeRecord" }
+          }
+        }
+      },
+      "MergeRecord": {
+        "type": "object",
+        "properties": {
+          "data": { "type": "object", "description": "Input merge data for this record" },
+          "download_link": { "type": "string", "format": "uri" },
+          "document_id": { "type": "string" },
+          "document_url": { "type": "string", "format": "uri" },
+          "status": { "type": "string", "enum": ["inprogress", "completed", "failed"] }
+        }
+      },
+      "CombineJobResponse": {
+        "type": "object",
+        "properties": {
+          "status_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to poll for job status"
+          }
+        }
+      },
+      "CombineStatusResponse": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string", "enum": ["completed", "inprogress", "failed"] },
+          "download_link": { "type": "string", "format": "uri" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error_code": { "type": "string" },
+          "message": { "type": "string" }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/documents": {
+      "get": {
+        "operationId": "listDocuments",
+        "summary": "Get list of documents",
+        "description": "Retrieve a paginated list of all documents in the authenticated user's account.",
+        "tags": ["Documents"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoPC.files.ALL",
+              "WorkDrive.files.ALL",
+              "WorkDrive.organization.ALL",
+              "WorkDrive.workspace.ALL"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of documents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "offset": { "type": "integer", "description": "Pagination offset" },
+                    "total_count": { "type": "integer", "description": "Total number of documents" },
+                    "limit": { "type": "integer", "description": "Documents returned per request" },
+                    "documents": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/DocumentSummary" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        },
+        "externalDocs": {
+          "description": "Get List of Documents",
+          "url": "https://www.zoho.com/writer/help/api/v1/get-list-of-documents.html"
+        }
+      },
+      "post": {
+        "operationId": "createDocument",
+        "summary": "Create or upload a document",
+        "description": "Create a blank document or upload an existing document file. Optionally set a filename and resource type.",
+        "tags": ["Documents"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoPC.files.ALL",
+              "WorkDrive.files.ALL",
+              "WorkDrive.organization.ALL",
+              "WorkDrive.workspace.ALL"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "filename": {
+                    "type": "string",
+                    "description": "Sets a unique name for the document; omitting creates a blank untitled document"
+                  },
+                  "resource_type": {
+                    "type": "string",
+                    "enum": ["fillable", "merge", "sign"],
+                    "description": "Defines document type"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Document created successfully",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DocumentDetails" }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        },
+        "externalDocs": {
+          "description": "Create / Upload Documents",
+          "url": "https://www.zoho.com/writer/help/api/v1/create-upload-documents.html"
+        }
+      }
+    },
+    "/documents/{document_id}": {
+      "get": {
+        "operationId": "getDocument",
+        "summary": "Get document details",
+        "description": "Retrieve full metadata and properties for a specific document.",
+        "tags": ["Documents"],
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for the Writer document"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document details",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DocumentDetails" }
+              }
+            }
+          },
+          "404": {
+            "description": "Document not found",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        },
+        "externalDocs": {
+          "description": "Get Document Details",
+          "url": "https://www.zoho.com/writer/help/api/v1/get-document-details.html"
+        }
+      }
+    },
+    "/documents/{document_id}/metrics": {
+      "get": {
+        "operationId": "getDocumentMetrics",
+        "summary": "Get document metrics",
+        "description": "Retrieve content metrics, comments metrics, and tracked-changes metrics for a document.",
+        "tags": ["Documents"],
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for the Writer document"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document metrics",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DocumentMetrics" }
+              }
+            }
+          },
+          "404": {
+            "description": "Document not found",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        },
+        "externalDocs": {
+          "description": "Get Document Metrics",
+          "url": "https://www.zoho.com/writer/help/api/v1/get-document-metrics.html"
+        }
+      }
+    },
+    "/download/{document_id}": {
+      "get": {
+        "operationId": "downloadDocument",
+        "summary": "Download a document",
+        "description": "Download a document in the specified format. Supports docx, odt, rtf, txt, html, pdf, zip, epub, zdoc, and pdfform. Defaults to docx.",
+        "tags": ["Documents"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoPC.files.ALL",
+              "WorkDrive.files.ALL"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for the document to download"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["zdoc", "docx", "odt", "rtf", "txt", "html", "pdf", "zip", "epub", "pdfform"],
+              "default": "docx"
+            },
+            "description": "Output file format"
+          },
+          {
+            "name": "options",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "include_changes": {
+                  "type": "string",
+                  "enum": ["as_markups", "all", "none"],
+                  "default": "none"
+                },
+                "include_comments": {
+                  "type": "string",
+                  "enum": ["all", "none"],
+                  "default": "none",
+                  "description": "docx/pdf only"
+                },
+                "include_styles": {
+                  "type": "string",
+                  "enum": ["as_inline", "none"],
+                  "default": "as_inline",
+                  "description": "html/zip only"
+                }
+              }
+            }
+          },
+          {
+            "name": "sign_service_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["zohosign", "adobesign", "docusign"]
+            },
+            "description": "Third-party signing service (pdf only)"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Password protection for docx/pdf output"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Document file content",
+            "content": {
+              "application/octet-stream": {
+                "schema": { "type": "string", "format": "binary" }
+              }
+            }
+          },
+          "404": {
+            "description": "Document not found",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } }
+          }
+        },
+        "externalDocs": {
+          "description": "Download Document",
+          "url": "https://www.zoho.com/writer/help/api/v1/download-document.html"
+        }
+      }
+    },
+    "/documents/{document_id}/merge": {
+      "post": {
+        "operationId": "mergeDocument",
+        "summary": "Merge document",
+        "description": "Merge a document with data and return the merged file directly as bytes or as a download URL.",
+        "tags": ["Merge"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoWriter.merge.ALL",
+              "ZohoPC.files.ALL",
+              "WorkDrive.files.ALL"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for the Writer document"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["output_settings"],
+                "properties": {
+                  "output_settings": {
+                    "$ref": "#/components/schemas/OutputSettings"
+                  },
+                  "merge_data": {
+                    "type": "object",
+                    "description": "Direct JSON merge data"
+                  },
+                  "merge_data_csv_content": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "CSV file upload"
+                  },
+                  "merge_data_json_content": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "JSON file upload"
+                  },
+                  "merge_data_csv_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL to CSV file"
+                  },
+                  "merge_data_json_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL to JSON file"
+                  },
+                  "record_id": {
+                    "type": "string",
+                    "maxLength": 25,
+                    "description": "For Zoho CRM/Creator/Bigin templates"
+                  },
+                  "response_type": {
+                    "type": "string",
+                    "enum": ["link"],
+                    "description": "Set to 'link' to receive a download URL instead of bytes"
+                  },
+                  "filename": {
+                    "type": "string",
+                    "description": "Document name without extension"
+                  },
+                  "sign_service_name": {
+                    "type": "string",
+                    "enum": ["adobesign", "docusign"],
+                    "description": "Third-party signing service (PDF only)"
+                  },
+                  "test_mode": {
+                    "type": "boolean",
+                    "description": "Testing mode; does not consume credits (50 merges/day limit)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Merged document as binary or link",
+            "content": {
+              "application/octet-stream": {
+                "schema": { "type": "string", "format": "binary" }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "URL": { "type": "string", "format": "uri" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "externalDocs": {
+          "description": "Merge Document",
+          "url": "https://www.zoho.com/writer/help/api/v1/merge-document.html"
+        }
+      }
+    },
+    "/documents/{document_id}/merge/sign": {
+      "post": {
+        "operationId": "mergeAndSign",
+        "summary": "Merge and sign",
+        "description": "Merge a document with data and send the result for electronic signature collection via Zoho Sign.",
+        "tags": ["Merge", "Signatures"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoWriter.merge.ALL",
+              "ZohoPC.files.ALL",
+              "WorkDrive.files.ALL"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for the Writer document"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["service_name", "filename"],
+                "properties": {
+                  "service_name": {
+                    "type": "string",
+                    "enum": ["zohosign"],
+                    "description": "Signing service provider"
+                  },
+                  "filename": {
+                    "type": "string",
+                    "description": "Name for the signed document"
+                  },
+                  "merge_data": { "type": "object" },
+                  "merge_data_csv_content": { "type": "string", "format": "binary" },
+                  "merge_data_json_content": { "type": "string", "format": "binary" },
+                  "merge_data_csv_url": { "type": "string", "format": "uri" },
+                  "merge_data_json_url": { "type": "string", "format": "uri" },
+                  "record_id": { "type": "string", "maxLength": 25 },
+                  "signer_data": {
+                    "type": "array",
+                    "description": "Array of signer details including action types and verification",
+                    "items": { "type": "object" }
+                  },
+                  "sign_in_order": {
+                    "type": "boolean",
+                    "description": "Enforce signing sequence"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Message for signers"
+                  },
+                  "set_expire": {
+                    "type": "integer",
+                    "maximum": 99,
+                    "description": "Expiration in days (max 99)"
+                  },
+                  "reminder_period": {
+                    "type": "integer",
+                    "description": "Reminder interval in days"
+                  },
+                  "common_attachments": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Shared attachments (max 20 files, 40 MB total)"
+                  },
+                  "test_mode": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Merge and sign job details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "merge_report_url": { "type": "string", "format": "uri" },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "sign_request_id": { "type": "string" },
+                          "status": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "externalDocs": {
+          "description": "Merge and Sign",
+          "url": "https://www.zoho.com/writer/help/api/v1/merge-and-sign.html"
+        }
+      }
+    },
+    "/documents/{document_id}/merge/execute": {
+      "post": {
+        "operationId": "mergeAndInvoke",
+        "summary": "Merge and invoke",
+        "description": "Trigger a merge operation programmatically and track status asynchronously.",
+        "tags": ["Merge"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoWriter.merge.ALL"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for the Writer document"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "merge_data": { "type": "object" },
+                  "merge_data_csv_content": { "type": "string", "format": "binary" },
+                  "merge_data_json_content": { "type": "string", "format": "binary" },
+                  "merge_data_csv_url": { "type": "string", "format": "uri" },
+                  "merge_data_json_url": { "type": "string", "format": "uri" },
+                  "record_id": { "type": "string", "maxLength": 25 },
+                  "output_settings": {
+                    "type": "object",
+                    "properties": {
+                      "format": { "type": "string", "enum": ["pdf", "docx", "pdfform"] },
+                      "password": { "type": "string" },
+                      "merge_to": { "type": "string", "enum": ["separatedoc", "singledoc"] },
+                      "filename": { "type": "string", "maxLength": 150 },
+                      "restricted_access": { "type": "object" }
+                    }
+                  },
+                  "test_mode": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Merge job initiated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MergeResponse" }
+              }
+            }
+          }
+        },
+        "externalDocs": {
+          "description": "Merge and Invoke",
+          "url": "https://www.zoho.com/writer/help/api/v1/merge-and-invoke.html"
+        }
+      }
+    },
+    "/documents/v2/{document_id}/merge/store": {
+      "post": {
+        "operationId": "mergeAndStoreV2",
+        "summary": "Merge and store (v2)",
+        "description": "Merge a document with data and store the resulting files in a specified Zoho WorkDrive folder. Supports webhooks for async status notifications.",
+        "tags": ["Merge"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoWriter.merge.ALL",
+              "WorkDrive.files.ALL",
+              "WorkDrive.organization.ALL"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "document_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for the Writer document"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["output_settings"],
+                "properties": {
+                  "output_settings": {
+                    "type": "object",
+                    "required": ["doc_name", "folder_id"],
+                    "properties": {
+                      "doc_name": { "type": "string" },
+                      "folder_id": { "type": "string" },
+                      "format": {
+                        "type": "string",
+                        "enum": ["pdf", "docx", "pdfform", "zdoc"],
+                        "default": "zdoc"
+                      },
+                      "password": { "type": "string", "maxLength": 100 },
+                      "overwrite_existing_file": { "type": "boolean" },
+                      "merge_to": {
+                        "type": "string",
+                        "enum": ["separatedoc", "singledoc"],
+                        "default": "separatedoc"
+                      },
+                      "sign_service_name": {
+                        "type": "string",
+                        "enum": ["adobesign", "docusign"]
+                      },
+                      "restricted_access": { "type": "object" }
+                    }
+                  },
+                  "merge_data": { "type": "object" },
+                  "merge_data_csv_content": { "type": "string", "format": "binary" },
+                  "merge_data_json_content": { "type": "string", "format": "binary" },
+                  "merge_data_csv_url": { "type": "string", "format": "uri" },
+                  "merge_data_json_url": { "type": "string", "format": "uri" },
+                  "record_id": { "type": "string", "maxLength": 25 },
+                  "test_mode": { "type": "boolean" },
+                  "webhook_info": {
+                    "type": "object",
+                    "properties": {
+                      "url": { "type": "string", "format": "uri" },
+                      "retry": { "type": "integer" },
+                      "timeout": { "type": "integer" },
+                      "expiry_date": { "type": "string" },
+                      "context": { "type": "object" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Merge and store job initiated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MergeResponse" }
+              }
+            }
+          }
+        },
+        "externalDocs": {
+          "description": "Merge and Store V2",
+          "url": "https://www.zoho.com/writer/help/api/v1/merge-and-store-v2.html"
+        }
+      }
+    },
+    "/documents/pdf/combine": {
+      "post": {
+        "operationId": "combinePdfs",
+        "summary": "Combine PDF documents",
+        "description": "Combine 2–20 PDF documents (local files or public URLs) into a single PDF. Returns a status URL to poll for the combined file download link.",
+        "tags": ["Combine"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoWriter.merge.ALL",
+              "WorkDrive.organization.ALL"
+            ]
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "files": {
+                    "type": "array",
+                    "items": { "type": "string", "format": "binary" },
+                    "description": "PDF files to combine (min 2, max 20, each up to 10 MB)"
+                  },
+                  "urls": {
+                    "type": "string",
+                    "description": "Comma-separated public URLs to PDF files"
+                  },
+                  "output_settings": {
+                    "type": "object",
+                    "description": "Configure merged file naming and page numbering with headers/footers"
+                  },
+                  "input_options": {
+                    "type": "object",
+                    "description": "Specify page ranges or individual pages per document"
+                  },
+                  "team_id": {
+                    "type": "string",
+                    "description": "WorkDrive team ID for credit usage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Combine job initiated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CombineJobResponse" }
+              }
+            }
+          }
+        },
+        "externalDocs": {
+          "description": "Combine PDFs",
+          "url": "https://www.zoho.com/writer/help/api/v1/combine-pdfs.html"
+        }
+      }
+    },
+    "/documents/pdf/combine/job/{job_id}": {
+      "get": {
+        "operationId": "getCombineJobStatus",
+        "summary": "Get combine job status",
+        "description": "Poll for the status of a PDF combine job. Returns a download link when complete.",
+        "tags": ["Combine"],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "The combine job identifier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Job status and download link",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CombineStatusResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/templates/{template_id}/bulkmerge/sign": {
+      "post": {
+        "operationId": "bulkMergeAndSign",
+        "summary": "Bulk merge and sign",
+        "description": "Perform bulk merge and sign operations using a template.",
+        "tags": ["Merge", "Signatures"],
+        "security": [
+          {
+            "OAuth2": [
+              "ZohoWriter.documentEditor.ALL",
+              "ZohoWriter.merge.ALL"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "template_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Unique identifier for the template"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "merge_data": { "type": "object" },
+                  "merge_data_csv_content": { "type": "string", "format": "binary" },
+                  "merge_data_json_content": { "type": "string", "format": "binary" },
+                  "merge_data_csv_url": { "type": "string", "format": "uri" },
+                  "merge_data_json_url": { "type": "string", "format": "uri" },
+                  "signer_data": { "type": "array", "items": { "type": "object" } },
+                  "service_name": { "type": "string", "enum": ["zohosign"] },
+                  "test_mode": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Bulk merge and sign job initiated",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MergeResponse" }
+              }
+            }
+          }
+        },
+        "externalDocs": {
+          "description": "Bulk Sign",
+          "url": "https://www.zoho.com/writer/help/api/v1/bulkmerge-sign.html"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Documents",
+      "description": "Create, upload, list, download, and inspect documents"
+    },
+    {
+      "name": "Merge",
+      "description": "Mail-merge operations: merge to bytes, link, store, invoke, or sign"
+    },
+    {
+      "name": "Combine",
+      "description": "Combine multiple PDF documents into one"
+    },
+    {
+      "name": "Signatures",
+      "description": "Electronic signature workflows via Zoho Sign"
+    }
+  ]
+}
