@@ -8,7 +8,7 @@ description: >
   webhook-triggered automation, and multi-format document export (PDF, DOCX, HTML).
   OAuth 2.0 authentication is used with domain-specific base URLs across global
   data centers.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/zoho-writer/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -30,7 +30,7 @@ apis:
       electronic signing, webhook automation, and multi-format document export.
       Supports Document, Meta, Combine, Merge, and Sign API categories with
       OAuth 2.0 authentication.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.zoho.com/writer/developers.html
     baseURL: https://writer.zoho.com/api/v1
     tags:
