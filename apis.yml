@@ -51,6 +51,10 @@ apis:
       - type: WhatsNew
         url: https://www.zoho.com/writer/whats-new.html
 common:
+  - type: VulnerabilityDisclosure
+    url: security/zoho-writer-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/zoho-writer-domain-security.yml
   - type: Authentication
     url: authentication/zoho-writer-authentication.yml
   - type: OAuthScopes
