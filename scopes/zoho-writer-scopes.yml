@@ -1,0 +1,49 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/zoho-writer-openapi.json
+schemes:
+- name: OAuth2
+  source: openapi/zoho-writer-openapi.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+    tokenUrl: https://accounts.zoho.com/oauth/v2/token
+  description: OAuth 2.0 authentication. Refer to https://www.zoho.com/writer/help/api/v1/oauth-2.html
+    for setup.
+scopes:
+- scope: WorkDrive.files.ALL
+  description: Access to WorkDrive files
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoho-writer-openapi.json
+- scope: WorkDrive.organization.ALL
+  description: Organization-level WorkDrive access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoho-writer-openapi.json
+- scope: WorkDrive.workspace.ALL
+  description: Workspace-level WorkDrive access
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoho-writer-openapi.json
+- scope: ZohoPC.files.ALL
+  description: Access to Zoho personal cloud files
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoho-writer-openapi.json
+- scope: ZohoWriter.documentEditor.ALL
+  description: Full access to document editor operations
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoho-writer-openapi.json
+- scope: ZohoWriter.merge.ALL
+  description: Full access to merge operations
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/zoho-writer-openapi.json

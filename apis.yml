@@ -51,6 +51,10 @@ apis:
       - type: WhatsNew
         url: https://www.zoho.com/writer/whats-new.html
 common:
+  - type: Authentication
+    url: authentication/zoho-writer-authentication.yml
+  - type: OAuthScopes
+    url: scopes/zoho-writer-scopes.yml
   - type: Website
     url: https://www.zoho.com/writer/
   - type: Documentation
