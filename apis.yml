@@ -51,6 +51,8 @@ apis:
       - type: WhatsNew
         url: https://www.zoho.com/writer/whats-new.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/zoho-writer-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/zoho-writer-vulnerability-disclosure.yml
   - type: DomainSecurity
