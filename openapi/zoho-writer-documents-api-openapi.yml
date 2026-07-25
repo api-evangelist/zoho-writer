@@ -1,0 +1,468 @@
+openapi: 3.0.3
+info:
+  title: Zoho Writer Combine Documents API
+  description: REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.
+  version: 1.0.0
+  contact:
+    name: Zoho Writer Support
+    email: support@zohowriter.com
+    url: https://www.zoho.com/writer/help/api/v1/
+  termsOfService: https://www.zoho.com/writer/developers.html
+  license:
+    name: Zoho API Terms
+    url: https://www.zoho.com/writer/developers.html
+servers:
+- url: https://www.zohoapis.com/writer/api/v1
+  description: United States (default)
+- url: https://www.zohoapis.eu/writer/api/v1
+  description: Europe
+- url: https://www.zohoapis.in/writer/api/v1
+  description: India
+- url: https://www.zohoapis.jp/writer/api/v1
+  description: Japan
+- url: https://www.zohoapis.com.au/writer/api/v1
+  description: Australia
+- url: https://www.zohoapis.ca/writer/api/v1
+  description: Canada
+- url: https://www.zohoapis.sa/writer/api/v1
+  description: Saudi Arabia
+- url: https://www.zohoapis.com.cn/writer/api/v1
+  description: China
+- url: https://www.zohoapis.sg/writer/api/v1
+  description: Singapore
+security:
+- OAuth2:
+  - ZohoWriter.documentEditor.ALL
+  - ZohoPC.files.ALL
+  - WorkDrive.files.ALL
+tags:
+- name: Documents
+  description: Create, upload, list, download, and inspect documents
+paths:
+  /documents:
+    get:
+      operationId: listDocuments
+      summary: Get list of documents
+      description: Retrieve a paginated list of all documents in the authenticated user's account.
+      tags:
+      - Documents
+      security:
+      - OAuth2:
+        - ZohoWriter.documentEditor.ALL
+        - ZohoPC.files.ALL
+        - WorkDrive.files.ALL
+        - WorkDrive.organization.ALL
+        - WorkDrive.workspace.ALL
+      responses:
+        '200':
+          description: Successful response with list of documents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  offset:
+                    type: integer
+                    description: Pagination offset
+                  total_count:
+                    type: integer
+                    description: Total number of documents
+                  limit:
+                    type: integer
+                    description: Documents returned per request
+                  documents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DocumentSummary'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: Get List of Documents
+        url: https://www.zoho.com/writer/help/api/v1/get-list-of-documents.html
+    post:
+      operationId: createDocument
+      summary: Create or upload a document
+      description: Create a blank document or upload an existing document file. Optionally set a filename and resource type.
+      tags:
+      - Documents
+      security:
+      - OAuth2:
+        - ZohoWriter.documentEditor.ALL
+        - ZohoPC.files.ALL
+        - WorkDrive.files.ALL
+        - WorkDrive.organization.ALL
+        - WorkDrive.workspace.ALL
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                filename:
+                  type: string
+                  description: Sets a unique name for the document; omitting creates a blank untitled document
+                resource_type:
+                  type: string
+                  enum:
+                  - fillable
+                  - merge
+                  - sign
+                  description: Defines document type
+      responses:
+        '200':
+          description: Document created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentDetails'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: Create / Upload Documents
+        url: https://www.zoho.com/writer/help/api/v1/create-upload-documents.html
+  /documents/{document_id}:
+    get:
+      operationId: getDocument
+      summary: Get document details
+      description: Retrieve full metadata and properties for a specific document.
+      tags:
+      - Documents
+      parameters:
+      - name: document_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the Writer document
+      responses:
+        '200':
+          description: Document details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentDetails'
+        '404':
+          description: Document not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: Get Document Details
+        url: https://www.zoho.com/writer/help/api/v1/get-document-details.html
+  /documents/{document_id}/metrics:
+    get:
+      operationId: getDocumentMetrics
+      summary: Get document metrics
+      description: Retrieve content metrics, comments metrics, and tracked-changes metrics for a document.
+      tags:
+      - Documents
+      parameters:
+      - name: document_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the Writer document
+      responses:
+        '200':
+          description: Document metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentMetrics'
+        '404':
+          description: Document not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: Get Document Metrics
+        url: https://www.zoho.com/writer/help/api/v1/get-document-metrics.html
+  /download/{document_id}:
+    get:
+      operationId: downloadDocument
+      summary: Download a document
+      description: Download a document in the specified format. Supports docx, odt, rtf, txt, html, pdf, zip, epub, zdoc, and pdfform. Defaults to docx.
+      tags:
+      - Documents
+      security:
+      - OAuth2:
+        - ZohoWriter.documentEditor.ALL
+        - ZohoPC.files.ALL
+        - WorkDrive.files.ALL
+      parameters:
+      - name: document_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the document to download
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - zdoc
+          - docx
+          - odt
+          - rtf
+          - txt
+          - html
+          - pdf
+          - zip
+          - epub
+          - pdfform
+          default: docx
+        description: Output file format
+      - name: options
+        in: query
+        required: false
+        schema:
+          type: object
+          properties:
+            include_changes:
+              type: string
+              enum:
+              - as_markups
+              - all
+              - none
+              default: none
+            include_comments:
+              type: string
+              enum:
+              - all
+              - none
+              default: none
+              description: docx/pdf only
+            include_styles:
+              type: string
+              enum:
+              - as_inline
+              - none
+              default: as_inline
+              description: html/zip only
+      - name: sign_service_name
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - zohosign
+          - adobesign
+          - docusign
+        description: Third-party signing service (pdf only)
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Password protection for docx/pdf output
+      responses:
+        '200':
+          description: Document file content
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Document not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: Download Document
+        url: https://www.zoho.com/writer/help/api/v1/download-document.html
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+    Permissions:
+      type: object
+      properties:
+        can_edit:
+          type: boolean
+        can_share:
+          type: boolean
+        can_delete:
+          type: boolean
+    ParentInfo:
+      type: object
+      properties:
+        folder_id:
+          type: string
+        folder_name:
+          type: string
+    UserInfo:
+      type: object
+      properties:
+        email_id:
+          type: string
+          format: email
+        user_id:
+          type: string
+        display_name:
+          type: string
+        profile_photo:
+          type: string
+          format: uri
+    DocumentMetrics:
+      type: object
+      properties:
+        comments_metrics:
+          type: object
+          properties:
+            total_count:
+              type: integer
+            unresolved_count:
+              type: integer
+            resolved_count:
+              type: integer
+        content_metrics:
+          type: object
+          properties:
+            sentences:
+              type: integer
+            characters:
+              type: integer
+            words:
+              type: integer
+            characters_without_whitespaces:
+              type: integer
+        tracked_changes_metrics:
+          type: object
+          properties:
+            all_changes:
+              type: integer
+            insertions:
+              type: integer
+            deletions:
+              type: integer
+            replacements:
+              type: integer
+            fields_updated:
+              type: integer
+    DocumentSummary:
+      type: object
+      properties:
+        document_id:
+          type: string
+          description: Unique identifier for the document
+        document_name:
+          type: string
+          description: Name of the document
+        document_type:
+          type: string
+          description: Type of document
+        created_time:
+          type: string
+          description: ISO 8601 creation timestamp
+        modified_time:
+          type: string
+          description: ISO 8601 last-modified timestamp
+        creator_id:
+          type: string
+          description: ID of the document creator
+        created_by:
+          type: string
+          description: Display name of the creator
+        lastmodified_by:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInfo'
+        preview_url:
+          type: string
+          format: uri
+        open_url:
+          type: string
+          format: uri
+        download_url:
+          type: string
+          format: uri
+        published_url:
+          type: string
+          format: uri
+    DocumentDetails:
+      allOf:
+      - $ref: '#/components/schemas/DocumentSummary'
+      - type: object
+        properties:
+          type:
+            type: string
+          role:
+            type: string
+          owner_id:
+            type: string
+          is_published:
+            type: boolean
+          is_shared:
+            type: boolean
+          is_favourite:
+            type: boolean
+          is_orgpublished:
+            type: boolean
+          created_time_in_millisecond:
+            type: integer
+          modified_time_in_millisecond:
+            type: integer
+          last_opened_time:
+            type: string
+          thumbnail_url:
+            type: string
+            format: uri
+          permalink:
+            type: string
+            format: uri
+          permissions:
+            $ref: '#/components/schemas/Permissions'
+          parent_info:
+            $ref: '#/components/schemas/ParentInfo'
+          library_id:
+            type: string
+          collaboration_id:
+            type: string
+          version:
+            type: string
+          status:
+            type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 authentication. Refer to https://www.zoho.com/writer/help/api/v1/oauth-2.html for setup.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+          tokenUrl: https://accounts.zoho.com/oauth/v2/token
+          scopes:
+            ZohoWriter.documentEditor.ALL: Full access to document editor operations
+            ZohoWriter.merge.ALL: Full access to merge operations
+            ZohoPC.files.ALL: Access to Zoho personal cloud files
+            WorkDrive.files.ALL: Access to WorkDrive files
+            WorkDrive.organization.ALL: Organization-level WorkDrive access
+            WorkDrive.workspace.ALL: Workspace-level WorkDrive access
+externalDocs:
+  description: Zoho Writer API Documentation
+  url: https://www.zoho.com/writer/help/api/v1/

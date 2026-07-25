@@ -1,0 +1,148 @@
+openapi: 3.0.3
+info:
+  title: Zoho Writer Combine API
+  description: REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.
+  version: 1.0.0
+  contact:
+    name: Zoho Writer Support
+    email: support@zohowriter.com
+    url: https://www.zoho.com/writer/help/api/v1/
+  termsOfService: https://www.zoho.com/writer/developers.html
+  license:
+    name: Zoho API Terms
+    url: https://www.zoho.com/writer/developers.html
+servers:
+- url: https://www.zohoapis.com/writer/api/v1
+  description: United States (default)
+- url: https://www.zohoapis.eu/writer/api/v1
+  description: Europe
+- url: https://www.zohoapis.in/writer/api/v1
+  description: India
+- url: https://www.zohoapis.jp/writer/api/v1
+  description: Japan
+- url: https://www.zohoapis.com.au/writer/api/v1
+  description: Australia
+- url: https://www.zohoapis.ca/writer/api/v1
+  description: Canada
+- url: https://www.zohoapis.sa/writer/api/v1
+  description: Saudi Arabia
+- url: https://www.zohoapis.com.cn/writer/api/v1
+  description: China
+- url: https://www.zohoapis.sg/writer/api/v1
+  description: Singapore
+security:
+- OAuth2:
+  - ZohoWriter.documentEditor.ALL
+  - ZohoPC.files.ALL
+  - WorkDrive.files.ALL
+tags:
+- name: Combine
+  description: Combine multiple PDF documents into one
+paths:
+  /documents/pdf/combine:
+    post:
+      operationId: combinePdfs
+      summary: Combine PDF documents
+      description: Combine 2–20 PDF documents (local files or public URLs) into a single PDF. Returns a status URL to poll for the combined file download link.
+      tags:
+      - Combine
+      security:
+      - OAuth2:
+        - ZohoWriter.documentEditor.ALL
+        - ZohoWriter.merge.ALL
+        - WorkDrive.organization.ALL
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: PDF files to combine (min 2, max 20, each up to 10 MB)
+                urls:
+                  type: string
+                  description: Comma-separated public URLs to PDF files
+                output_settings:
+                  type: object
+                  description: Configure merged file naming and page numbering with headers/footers
+                input_options:
+                  type: object
+                  description: Specify page ranges or individual pages per document
+                team_id:
+                  type: string
+                  description: WorkDrive team ID for credit usage
+      responses:
+        '200':
+          description: Combine job initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CombineJobResponse'
+      externalDocs:
+        description: Combine PDFs
+        url: https://www.zoho.com/writer/help/api/v1/combine-pdfs.html
+  /documents/pdf/combine/job/{job_id}:
+    get:
+      operationId: getCombineJobStatus
+      summary: Get combine job status
+      description: Poll for the status of a PDF combine job. Returns a download link when complete.
+      tags:
+      - Combine
+      parameters:
+      - name: job_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The combine job identifier
+      responses:
+        '200':
+          description: Job status and download link
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CombineStatusResponse'
+components:
+  schemas:
+    CombineJobResponse:
+      type: object
+      properties:
+        status_url:
+          type: string
+          format: uri
+          description: URL to poll for job status
+    CombineStatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - completed
+          - inprogress
+          - failed
+        download_link:
+          type: string
+          format: uri
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 authentication. Refer to https://www.zoho.com/writer/help/api/v1/oauth-2.html for setup.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+          tokenUrl: https://accounts.zoho.com/oauth/v2/token
+          scopes:
+            ZohoWriter.documentEditor.ALL: Full access to document editor operations
+            ZohoWriter.merge.ALL: Full access to merge operations
+            ZohoPC.files.ALL: Access to Zoho personal cloud files
+            WorkDrive.files.ALL: Access to WorkDrive files
+            WorkDrive.organization.ALL: Organization-level WorkDrive access
+            WorkDrive.workspace.ALL: Workspace-level WorkDrive access
+externalDocs:
+  description: Zoho Writer API Documentation
+  url: https://www.zoho.com/writer/help/api/v1/

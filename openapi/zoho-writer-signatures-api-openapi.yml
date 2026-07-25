@@ -1,0 +1,261 @@
+openapi: 3.0.3
+info:
+  title: Zoho Writer Combine Signatures API
+  description: REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.
+  version: 1.0.0
+  contact:
+    name: Zoho Writer Support
+    email: support@zohowriter.com
+    url: https://www.zoho.com/writer/help/api/v1/
+  termsOfService: https://www.zoho.com/writer/developers.html
+  license:
+    name: Zoho API Terms
+    url: https://www.zoho.com/writer/developers.html
+servers:
+- url: https://www.zohoapis.com/writer/api/v1
+  description: United States (default)
+- url: https://www.zohoapis.eu/writer/api/v1
+  description: Europe
+- url: https://www.zohoapis.in/writer/api/v1
+  description: India
+- url: https://www.zohoapis.jp/writer/api/v1
+  description: Japan
+- url: https://www.zohoapis.com.au/writer/api/v1
+  description: Australia
+- url: https://www.zohoapis.ca/writer/api/v1
+  description: Canada
+- url: https://www.zohoapis.sa/writer/api/v1
+  description: Saudi Arabia
+- url: https://www.zohoapis.com.cn/writer/api/v1
+  description: China
+- url: https://www.zohoapis.sg/writer/api/v1
+  description: Singapore
+security:
+- OAuth2:
+  - ZohoWriter.documentEditor.ALL
+  - ZohoPC.files.ALL
+  - WorkDrive.files.ALL
+tags:
+- name: Signatures
+  description: Electronic signature workflows via Zoho Sign
+paths:
+  /documents/{document_id}/merge/sign:
+    post:
+      operationId: mergeAndSign
+      summary: Merge and sign
+      description: Merge a document with data and send the result for electronic signature collection via Zoho Sign.
+      tags:
+      - Signatures
+      security:
+      - OAuth2:
+        - ZohoWriter.documentEditor.ALL
+        - ZohoWriter.merge.ALL
+        - ZohoPC.files.ALL
+        - WorkDrive.files.ALL
+      parameters:
+      - name: document_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the Writer document
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - service_name
+              - filename
+              properties:
+                service_name:
+                  type: string
+                  enum:
+                  - zohosign
+                  description: Signing service provider
+                filename:
+                  type: string
+                  description: Name for the signed document
+                merge_data:
+                  type: object
+                merge_data_csv_content:
+                  type: string
+                  format: binary
+                merge_data_json_content:
+                  type: string
+                  format: binary
+                merge_data_csv_url:
+                  type: string
+                  format: uri
+                merge_data_json_url:
+                  type: string
+                  format: uri
+                record_id:
+                  type: string
+                  maxLength: 25
+                signer_data:
+                  type: array
+                  description: Array of signer details including action types and verification
+                  items:
+                    type: object
+                sign_in_order:
+                  type: boolean
+                  description: Enforce signing sequence
+                message:
+                  type: string
+                  description: Message for signers
+                set_expire:
+                  type: integer
+                  maximum: 99
+                  description: Expiration in days (max 99)
+                reminder_period:
+                  type: integer
+                  description: Reminder interval in days
+                common_attachments:
+                  type: string
+                  format: binary
+                  description: Shared attachments (max 20 files, 40 MB total)
+                test_mode:
+                  type: boolean
+      responses:
+        '200':
+          description: Merge and sign job details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  merge_report_url:
+                    type: string
+                    format: uri
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sign_request_id:
+                          type: string
+                        status:
+                          type: string
+      externalDocs:
+        description: Merge and Sign
+        url: https://www.zoho.com/writer/help/api/v1/merge-and-sign.html
+  /templates/{template_id}/bulkmerge/sign:
+    post:
+      operationId: bulkMergeAndSign
+      summary: Bulk merge and sign
+      description: Perform bulk merge and sign operations using a template.
+      tags:
+      - Signatures
+      security:
+      - OAuth2:
+        - ZohoWriter.documentEditor.ALL
+        - ZohoWriter.merge.ALL
+      parameters:
+      - name: template_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the template
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                merge_data:
+                  type: object
+                merge_data_csv_content:
+                  type: string
+                  format: binary
+                merge_data_json_content:
+                  type: string
+                  format: binary
+                merge_data_csv_url:
+                  type: string
+                  format: uri
+                merge_data_json_url:
+                  type: string
+                  format: uri
+                signer_data:
+                  type: array
+                  items:
+                    type: object
+                service_name:
+                  type: string
+                  enum:
+                  - zohosign
+                test_mode:
+                  type: boolean
+      responses:
+        '200':
+          description: Bulk merge and sign job initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MergeResponse'
+      externalDocs:
+        description: Bulk Sign
+        url: https://www.zoho.com/writer/help/api/v1/bulkmerge-sign.html
+components:
+  schemas:
+    MergeRecord:
+      type: object
+      properties:
+        data:
+          type: object
+          description: Input merge data for this record
+        download_link:
+          type: string
+          format: uri
+        document_id:
+          type: string
+        document_url:
+          type: string
+          format: uri
+        status:
+          type: string
+          enum:
+          - inprogress
+          - completed
+          - failed
+    MergeResponse:
+      type: object
+      properties:
+        merge_report_data_url:
+          type: string
+          format: uri
+        merge_report_url:
+          type: string
+          format: uri
+        status:
+          type: string
+          enum:
+          - inprogress
+          - completed
+          - failed
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/MergeRecord'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 authentication. Refer to https://www.zoho.com/writer/help/api/v1/oauth-2.html for setup.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+          tokenUrl: https://accounts.zoho.com/oauth/v2/token
+          scopes:
+            ZohoWriter.documentEditor.ALL: Full access to document editor operations
+            ZohoWriter.merge.ALL: Full access to merge operations
+            ZohoPC.files.ALL: Access to Zoho personal cloud files
+            WorkDrive.files.ALL: Access to WorkDrive files
+            WorkDrive.organization.ALL: Organization-level WorkDrive access
+            WorkDrive.workspace.ALL: Workspace-level WorkDrive access
+externalDocs:
+  description: Zoho Writer API Documentation
+  url: https://www.zoho.com/writer/help/api/v1/
