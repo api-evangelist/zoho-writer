@@ -8,7 +8,20 @@ description: >
   webhook-triggered automation, and multi-format document export (PDF, DOCX, HTML).
   OAuth 2.0 authentication is used with domain-specific base URLs across global
   data centers.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/zoho-writer.png
 url: https://raw.githubusercontent.com/api-evangelist/zoho-writer/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -23,33 +36,72 @@ tags:
   - Office Suite
   - Automation
 apis:
-  - aid: zoho-writer:zoho-writer-api
-    name: Zoho Writer API
-    description: >
-      REST API for programmatic document creation, editing, mail merge,
-      electronic signing, webhook automation, and multi-format document export.
-      Supports Document, Meta, Combine, Merge, and Sign API categories with
-      OAuth 2.0 authentication.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.zoho.com/writer/developers.html
-    baseURL: https://writer.zoho.com/api/v1
-    tags:
-      - Documents
-      - Mail Merge
-      - Signatures
-      - Automation
-      - REST
-    properties:
-      - type: Documentation
-        url: https://www.zoho.com/writer/help/api/v1/
-      - type: Authentication
-        url: https://www.zoho.com/writer/help/api/v1/oauth-2.html
-      - type: RateLimits
-        url: https://www.zoho.com/writer/help/api/v1/writer-apis-threshold-limits.html
-      - type: Webhooks
-        url: https://www.zoho.com/writer/help/api/v1/webhooks.html
-      - type: WhatsNew
-        url: https://www.zoho.com/writer/whats-new.html
+- aid: zoho-writer:zoho-writer-api
+  name: Zoho Writer API
+  description: >
+    REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation,
+    and multi-format document export. Supports Document, Meta, Combine, Merge, and Sign API categories
+    with OAuth 2.0 authentication.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.zoho.com/writer/developers.html
+  baseURL: https://writer.zoho.com/api/v1
+  tags:
+  - Documents
+  - Mail Merge
+  - Signatures
+  - Automation
+  - REST
+  properties:
+  - type: Documentation
+    url: https://www.zoho.com/writer/help/api/v1/
+  - type: Authentication
+    url: https://www.zoho.com/writer/help/api/v1/oauth-2.html
+  - type: RateLimits
+    url: https://www.zoho.com/writer/help/api/v1/writer-apis-threshold-limits.html
+  - type: Webhooks
+    url: https://www.zoho.com/writer/help/api/v1/webhooks.html
+  - type: WhatsNew
+    url: https://www.zoho.com/writer/whats-new.html
+- aid: zoho-writer:zoho-writer-combine-api
+  name: Zoho Writer Combine API
+  description: Combine multiple PDF documents into one
+  humanURL: https://www.zoho.com/writer/developers.html
+  baseURL: https://writer.zoho.com/api/v1
+  tags:
+  - Combine
+  properties:
+  - type: OpenAPI
+    url: openapi/zoho-writer-combine-api-openapi.yml
+- aid: zoho-writer:zoho-writer-documents-api
+  name: Zoho Writer Documents API
+  description: Create, upload, list, download, and inspect documents
+  humanURL: https://www.zoho.com/writer/developers.html
+  baseURL: https://writer.zoho.com/api/v1
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/zoho-writer-documents-api-openapi.yml
+- aid: zoho-writer:zoho-writer-merge-api
+  name: Zoho Writer Merge API
+  description: 'Mail-merge operations: merge to bytes, link, store, invoke, or sign'
+  humanURL: https://www.zoho.com/writer/developers.html
+  baseURL: https://writer.zoho.com/api/v1
+  tags:
+  - Merge
+  properties:
+  - type: OpenAPI
+    url: openapi/zoho-writer-merge-api-openapi.yml
+- aid: zoho-writer:zoho-writer-signatures-api
+  name: Zoho Writer Signatures API
+  description: Electronic signature workflows via Zoho Sign
+  humanURL: https://www.zoho.com/writer/developers.html
+  baseURL: https://writer.zoho.com/api/v1
+  tags:
+  - Signatures
+  properties:
+  - type: OpenAPI
+    url: openapi/zoho-writer-signatures-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/zoho-writer-agentic-access.yml
