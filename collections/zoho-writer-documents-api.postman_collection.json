@@ -1,0 +1,1016 @@
+{
+  "item": [
+    {
+      "id": "c3d281c2-a963-44b3-94e4-07d3e13b6056",
+      "name": "Documents",
+      "description": {
+        "content": "Create, upload, list, download, and inspect documents",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccf0f29d-d050-4d3d-b300-0e579ec3e56f",
+          "name": "Get list of documents",
+          "request": {
+            "name": "Get list of documents",
+            "description": {
+              "content": "Retrieve a paginated list of all documents in the authenticated user's account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c3e9f90d-7bce-4f45-920f-01924a3ac529",
+              "name": "Successful response with list of documents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"offset\": 5729,\n  \"total_count\": 8303,\n  \"limit\": 1681,\n  \"documents\": [\n    {\n      \"document_id\": \"string\",\n      \"document_name\": \"string\",\n      \"document_type\": \"string\",\n      \"created_time\": \"string\",\n      \"modified_time\": \"string\",\n      \"creator_id\": \"string\",\n      \"created_by\": \"string\",\n      \"lastmodified_by\": [\n        {\n          \"email_id\": \"WaMB4@NXJ.nc\",\n          \"user_id\": \"string\",\n          \"display_name\": \"string\",\n          \"profile_photo\": \"https://NUUxxAXPIMyyHbWGnGJYHyTOf.jxteUibSc\"\n        },\n        {\n          \"email_id\": \"6Soj2Tk0LuKiOx@fPe.jdyt\",\n          \"user_id\": \"string\",\n          \"display_name\": \"string\",\n          \"profile_photo\": \"https://JxNvcQpykwEav.cxn\"\n        }\n      ],\n      \"preview_url\": \"https://srDdeTrpqgMupJFTY.mopryRc.zoilzYpAZAr.X.BfwjTcLIhbIAFknWE6FGDTNhz49+7\",\n      \"open_url\": \"http://CVtQTSKrMceEOdIPeKayQtqnK.pcorpquaxXjsUMOr\",\n      \"download_url\": \"http://gNfQe.vhhAyPD.HuyME\",\n      \"published_url\": \"https://CiEWYTBFe.aigSqXRsw,+fGyar8IlKvOAKerB3vuirmCIbXvtbq8DSrw3NvXbu\"\n    },\n    {\n      \"document_id\": \"string\",\n      \"document_name\": \"string\",\n      \"document_type\": \"string\",\n      \"created_time\": \"string\",\n      \"modified_time\": \"string\",\n      \"creator_id\": \"string\",\n      \"created_by\": \"string\",\n      \"lastmodified_by\": [\n        {\n          \"email_id\": \"oXWXkJ1M@CRJkmrzYuD.owi\",\n          \"user_id\": \"string\",\n          \"display_name\": \"string\",\n          \"profile_photo\": \"http://PILFaMeyNvGobYDuD.ixumEv1Fwc,wjmsb\"\n        },\n        {\n          \"email_id\": \"8-s@PfVHIFiODmqSqcsopXBiOg.qvcx\",\n          \"user_id\": \"string\",\n          \"display_name\": \"string\",\n          \"profile_photo\": \"http://yGMOMLLbkh.ibbT,PhZaklt8ixpEZpRzBFWWvHVKkE.2owZUPdqptW6lOs0m\"\n        }\n      ],\n      \"preview_url\": \"http://Bch.yoyayzdcBKST6NKJmCSPHGJx-gvUkL7KyIgNzXCrxTOCbkcMGazkooSnlaH\",\n      \"open_url\": \"https://FbyjyeASKdUOLjZhtJgDbu.hnbQRfNCSV,rh8RHk4hCy+rs+dcjvBfbCSB2Ag66hifY1WET,fkog8MCmGu\",\n      \"download_url\": \"http://AMINXCn.dbyUALNHpfxWrgd8sngx3vbviC6Y77359yy-\",\n      \"published_url\": \"https://SEJOznUTdHgxmPdb.stgrJU9z.dGwQbY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd02187b-a603-420b-8a96-b63d0849c8b7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed89a954-e9a4-446e-89f0-5ea1ccf68b3e",
+          "name": "Create or upload a document",
+          "request": {
+            "name": "Create or upload a document",
+            "description": {
+              "content": "Create a blank document or upload an existing document file. Optionally set a filename and resource type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "filename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Sets a unique name for the document; omitting creates a blank untitled document"
+                },
+                {
+                  "key": "resource_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Defines document type (This can only be one of fillable,merge,sign)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c02ad9c2-0f00-4100-8b60-7271d1772d04",
+              "name": "Document created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Sets a unique name for the document; omitting creates a blank untitled document",
+                        "type": "text/plain"
+                      },
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Defines document type (This can only be one of fillable,merge,sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "resource_type",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"document_id\": \"string\",\n  \"document_name\": \"string\",\n  \"document_type\": \"string\",\n  \"created_time\": \"string\",\n  \"modified_time\": \"string\",\n  \"creator_id\": \"string\",\n  \"created_by\": \"string\",\n  \"lastmodified_by\": [\n    {\n      \"email_id\": \"a4uo-PyXS9@UMAwhWba.xy\",\n      \"user_id\": \"string\",\n      \"display_name\": \"string\",\n      \"profile_photo\": \"http://NSKNSfXrcWekmSJWE.phHazxnlCb2fbFUSMIrGKzYf5zovqzZJVREbMnoucw.yETLsjeZWGadd2\"\n    },\n    {\n      \"email_id\": \"sqR6I-WmqZFUcs@WHGKdzWDvyhifWrHhzMVSEsXC.ixw\",\n      \"user_id\": \"string\",\n      \"display_name\": \"string\",\n      \"profile_photo\": \"http://NgiyeXfEnSxNxXpnzboH.tfTbmyLNG5NzQ,7ZDXLGrzIzz,uq3SmdjvqHw5Qw09Ta1ST\"\n    }\n  ],\n  \"preview_url\": \"https://gwSEAgmrgUdDGaUSbujbjwyKRDwg.byjdmU6g49RD4CP7vJG5nuQcojymf-tPx6v1MRFv2zyWTjV8POyZ58cVQC,L.B\",\n  \"open_url\": \"https://IveBuKcaWbcXyphAZXHAKfYmCSErC.ljmpSuIBUMUn46Hd+qJXWZxZJIlB4Bratu68EBULv0byGiCNl+IAbS-jTKGw1Mt16NjVbMSPfG7Xk\",\n  \"download_url\": \"http://AMAVaCLoAhjvrfdwydvBEqgKYCTaUZ.botJCHND,06PtzZcY71pOkQkc2MUVmv2+LLdymDDH1QzoSS1\",\n  \"published_url\": \"https://UY.voejLgN5glgbQ+kmxwXc6X1pXECiRkwcsidjr,CdFZE+TujnDzUe4jou4UA+vc\",\n  \"type\": \"string\",\n  \"role\": \"string\",\n  \"owner_id\": \"string\",\n  \"is_published\": false,\n  \"is_shared\": false,\n  \"is_favourite\": false,\n  \"is_orgpublished\": false,\n  \"created_time_in_millisecond\": 3403,\n  \"modified_time_in_millisecond\": 3215,\n  \"last_opened_time\": \"string\",\n  \"thumbnail_url\": \"https://DzLiobntcmvYA.lvkP20A.wHPz70UPi8AHsVbR,9+lPsYfiM.fX,VU.KCLr\",\n  \"permalink\": \"http://W.wlbjQcQ10TDcfRydJGprGSWEaGmh+ueadgCZADaI13dgnjT0TF\",\n  \"permissions\": {\n    \"can_edit\": false,\n    \"can_share\": true,\n    \"can_delete\": true\n  },\n  \"parent_info\": {\n    \"folder_id\": \"string\",\n    \"folder_name\": \"string\"\n  },\n  \"library_id\": \"string\",\n  \"collaboration_id\": \"string\",\n  \"version\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8098efc1-c0b4-497b-b9c1-2c8df2c14e87",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Sets a unique name for the document; omitting creates a blank untitled document",
+                        "type": "text/plain"
+                      },
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Defines document type (This can only be one of fillable,merge,sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "resource_type",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "601728b9-3fac-45cd-a909-f032b8edd01c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Sets a unique name for the document; omitting creates a blank untitled document",
+                        "type": "text/plain"
+                      },
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Defines document type (This can only be one of fillable,merge,sign)",
+                        "type": "text/plain"
+                      },
+                      "key": "resource_type",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9f0cf04-4f26-4270-8669-13a905b67b80",
+          "name": "Get document details",
+          "request": {
+            "name": "Get document details",
+            "description": {
+              "content": "Retrieve full metadata and properties for a specific document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document_id",
+                  "description": "(Required) Unique identifier for the Writer document"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b401ac46-885e-48c5-b49b-29f4f5052854",
+              "name": "Document details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"document_id\": \"string\",\n  \"document_name\": \"string\",\n  \"document_type\": \"string\",\n  \"created_time\": \"string\",\n  \"modified_time\": \"string\",\n  \"creator_id\": \"string\",\n  \"created_by\": \"string\",\n  \"lastmodified_by\": [\n    {\n      \"email_id\": \"a4uo-PyXS9@UMAwhWba.xy\",\n      \"user_id\": \"string\",\n      \"display_name\": \"string\",\n      \"profile_photo\": \"http://NSKNSfXrcWekmSJWE.phHazxnlCb2fbFUSMIrGKzYf5zovqzZJVREbMnoucw.yETLsjeZWGadd2\"\n    },\n    {\n      \"email_id\": \"sqR6I-WmqZFUcs@WHGKdzWDvyhifWrHhzMVSEsXC.ixw\",\n      \"user_id\": \"string\",\n      \"display_name\": \"string\",\n      \"profile_photo\": \"http://NgiyeXfEnSxNxXpnzboH.tfTbmyLNG5NzQ,7ZDXLGrzIzz,uq3SmdjvqHw5Qw09Ta1ST\"\n    }\n  ],\n  \"preview_url\": \"https://gwSEAgmrgUdDGaUSbujbjwyKRDwg.byjdmU6g49RD4CP7vJG5nuQcojymf-tPx6v1MRFv2zyWTjV8POyZ58cVQC,L.B\",\n  \"open_url\": \"https://IveBuKcaWbcXyphAZXHAKfYmCSErC.ljmpSuIBUMUn46Hd+qJXWZxZJIlB4Bratu68EBULv0byGiCNl+IAbS-jTKGw1Mt16NjVbMSPfG7Xk\",\n  \"download_url\": \"http://AMAVaCLoAhjvrfdwydvBEqgKYCTaUZ.botJCHND,06PtzZcY71pOkQkc2MUVmv2+LLdymDDH1QzoSS1\",\n  \"published_url\": \"https://UY.voejLgN5glgbQ+kmxwXc6X1pXECiRkwcsidjr,CdFZE+TujnDzUe4jou4UA+vc\",\n  \"type\": \"string\",\n  \"role\": \"string\",\n  \"owner_id\": \"string\",\n  \"is_published\": false,\n  \"is_shared\": false,\n  \"is_favourite\": false,\n  \"is_orgpublished\": false,\n  \"created_time_in_millisecond\": 3403,\n  \"modified_time_in_millisecond\": 3215,\n  \"last_opened_time\": \"string\",\n  \"thumbnail_url\": \"https://DzLiobntcmvYA.lvkP20A.wHPz70UPi8AHsVbR,9+lPsYfiM.fX,VU.KCLr\",\n  \"permalink\": \"http://W.wlbjQcQ10TDcfRydJGprGSWEaGmh+ueadgCZADaI13dgnjT0TF\",\n  \"permissions\": {\n    \"can_edit\": false,\n    \"can_share\": true,\n    \"can_delete\": true\n  },\n  \"parent_info\": {\n    \"folder_id\": \"string\",\n    \"folder_name\": \"string\"\n  },\n  \"library_id\": \"string\",\n  \"collaboration_id\": \"string\",\n  \"version\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c95f140-e868-4a0d-aee2-772c9d89cd0c",
+              "name": "Document not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25a95371-0285-47d2-889a-bafe8a2c2393",
+          "name": "Get document metrics",
+          "request": {
+            "name": "Get document metrics",
+            "description": {
+              "content": "Retrieve content metrics, comments metrics, and tracked-changes metrics for a document.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document_id",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document_id",
+                  "description": "(Required) Unique identifier for the Writer document"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "094e368e-f5ef-41e1-9062-05e758b30773",
+              "name": "Document metrics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document_id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comments_metrics\": {\n    \"total_count\": 4919,\n    \"unresolved_count\": 8112,\n    \"resolved_count\": 8051\n  },\n  \"content_metrics\": {\n    \"sentences\": 9680,\n    \"characters\": 5158,\n    \"words\": 641,\n    \"characters_without_whitespaces\": 2651\n  },\n  \"tracked_changes_metrics\": {\n    \"all_changes\": 6245,\n    \"insertions\": 3361,\n    \"deletions\": 7135,\n    \"replacements\": 129,\n    \"fields_updated\": 1473\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e11df923-c48e-4646-ac16-71af16e30214",
+              "name": "Document not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document_id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93ea079a-5a91-45df-ba38-9648f602add3",
+          "name": "Download a document",
+          "request": {
+            "name": "Download a document",
+            "description": {
+              "content": "Download a document in the specified format. Supports docx, odt, rtf, txt, html, pdf, zip, epub, zdoc, and pdfform. Defaults to docx.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "download",
+                ":document_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "docx",
+                  "description": "Output file format"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_changes",
+                  "value": "none"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_comments",
+                  "value": "none"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_styles",
+                  "value": "as_inline"
+                },
+                {
+                  "disabled": false,
+                  "key": "sign_service_name",
+                  "value": "<string>",
+                  "description": "Third-party signing service (pdf only)"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "Password protection for docx/pdf output"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document_id",
+                  "description": "(Required) Unique identifier for the document to download"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f545ddd-106f-4df0-9d9d-6b0e75a28c6e",
+              "name": "Document file content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download",
+                    ":document_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "docx"
+                    },
+                    {
+                      "key": "include_changes",
+                      "value": "none"
+                    },
+                    {
+                      "key": "include_comments",
+                      "value": "none"
+                    },
+                    {
+                      "key": "include_styles",
+                      "value": "as_inline"
+                    },
+                    {
+                      "key": "sign_service_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the document to download"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c639062-ecda-4b26-9950-955a2ad429e4",
+              "name": "Document not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "download",
+                    ":document_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "docx"
+                    },
+                    {
+                      "key": "include_changes",
+                      "value": "none"
+                    },
+                    {
+                      "key": "include_comments",
+                      "value": "none"
+                    },
+                    {
+                      "key": "include_styles",
+                      "value": "as_inline"
+                    },
+                    {
+                      "key": "sign_service_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the document to download"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error_code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.zohoapis.com/writer/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6fbd333a-29d5-4bc0-aa6a-51e17c349fb8",
+    "name": "Zoho Writer Combine Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.\n\nContact Support:\n Name: Zoho Writer Support\n Email: support@zohowriter.com",
+      "type": "text/plain"
+    }
+  }
+}

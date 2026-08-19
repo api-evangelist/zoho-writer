@@ -1,0 +1,455 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoho Writer Combine Merge API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+      "accessTokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Merge",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Merge document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.zohoapis.com/writer/api/v1/documents/:document_id/merge",
+            "params": [
+              {
+                "name": "document_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the Writer document"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "output_settings",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "record_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "response_type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "filename",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sign_service_name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "test_mode",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+              "accessTokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Merge a document with data and return the merged file directly as bytes or as a download URL."
+        },
+        {
+          "info": {
+            "name": "Merge and sign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.zohoapis.com/writer/api/v1/documents/:document_id/merge/sign",
+            "params": [
+              {
+                "name": "document_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the Writer document"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "service_name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "filename",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "record_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "signer_data",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sign_in_order",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "set_expire",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "reminder_period",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "common_attachments",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "test_mode",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+              "accessTokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Merge a document with data and send the result for electronic signature collection via Zoho Sign."
+        },
+        {
+          "info": {
+            "name": "Merge and invoke",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.zohoapis.com/writer/api/v1/documents/:document_id/merge/execute",
+            "params": [
+              {
+                "name": "document_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the Writer document"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "merge_data",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "record_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "output_settings",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "test_mode",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+              "accessTokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Trigger a merge operation programmatically and track status asynchronously."
+        },
+        {
+          "info": {
+            "name": "Merge and store (v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.zohoapis.com/writer/api/v1/documents/v2/:document_id/merge/store",
+            "params": [
+              {
+                "name": "document_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the Writer document"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "output_settings",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "record_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "test_mode",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "webhook_info",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+              "accessTokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Merge a document with data and store the resulting files in a specified Zoho WorkDrive folder. Supports webhooks for async status notifications."
+        },
+        {
+          "info": {
+            "name": "Bulk merge and sign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.zohoapis.com/writer/api/v1/templates/:template_id/bulkmerge/sign",
+            "params": [
+              {
+                "name": "template_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the template"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "merge_data",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_content",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_csv_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "merge_data_json_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "signer_data",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "service_name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "test_mode",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+              "accessTokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Perform bulk merge and sign operations using a template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

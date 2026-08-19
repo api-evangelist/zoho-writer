@@ -1,0 +1,659 @@
+{
+  "item": [
+    {
+      "id": "3bdbfb8e-b5d4-4f97-a1d2-43e9559358dd",
+      "name": "Signatures",
+      "description": {
+        "content": "Electronic signature workflows via Zoho Sign",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2103cc1c-04ff-4d12-be81-bed74a5328c8",
+          "name": "Merge and sign",
+          "request": {
+            "name": "Merge and sign",
+            "description": {
+              "content": "Merge a document with data and send the result for electronic signature collection via Zoho Sign.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document_id",
+                "merge",
+                "sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document_id",
+                  "description": "(Required) Unique identifier for the Writer document"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "service_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Signing service provider (This can only be one of zohosign)"
+                },
+                {
+                  "key": "filename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Name for the signed document"
+                },
+                {
+                  "key": "merge_data",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "record_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "signer_data",
+                  "value": "[\"<object>\",\"<object>\"]",
+                  "type": "text",
+                  "description": "Array of signer details including action types and verification"
+                },
+                {
+                  "key": "sign_in_order",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Enforce signing sequence"
+                },
+                {
+                  "key": "message",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Message for signers"
+                },
+                {
+                  "key": "set_expire",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Expiration in days (max 99)"
+                },
+                {
+                  "key": "reminder_period",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Reminder interval in days"
+                },
+                {
+                  "key": "common_attachments",
+                  "type": "file",
+                  "description": "Shared attachments (max 20 files, 40 MB total)"
+                },
+                {
+                  "key": "test_mode",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "64af6ba1-68af-4018-96db-7572a49b9781",
+              "name": "Merge and sign job details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document_id",
+                    "merge",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Signing service provider (This can only be one of zohosign)",
+                        "type": "text/plain"
+                      },
+                      "key": "service_name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Name for the signed document",
+                        "type": "text/plain"
+                      },
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "record_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Array of signer details including action types and verification",
+                        "type": "text/plain"
+                      },
+                      "key": "signer_data",
+                      "value": "[\"<object>\",\"<object>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Enforce signing sequence",
+                        "type": "text/plain"
+                      },
+                      "key": "sign_in_order",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Message for signers",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Expiration in days (max 99)",
+                        "type": "text/plain"
+                      },
+                      "key": "set_expire",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Reminder interval in days",
+                        "type": "text/plain"
+                      },
+                      "key": "reminder_period",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Shared attachments (max 20 files, 40 MB total)",
+                        "type": "text/plain"
+                      },
+                      "key": "common_attachments",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "test_mode",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merge_report_url\": \"https://kcCXKuRnJFiPGkFEjlHLtDXZvGPEqo.ysjdvYP59RNuMoaS8oYlMlkIKM2nzmHHKKH-yXLtodCn\",\n  \"records\": [\n    {\n      \"sign_request_id\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"sign_request_id\": \"string\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35078a34-53e5-49d9-936e-592c91cfcf2e",
+          "name": "Bulk merge and sign",
+          "request": {
+            "name": "Bulk merge and sign",
+            "description": {
+              "content": "Perform bulk merge and sign operations using a template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id",
+                "bulkmerge",
+                "sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "template_id",
+                  "description": "(Required) Unique identifier for the template"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "merge_data",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "signer_data",
+                  "value": "[\"<object>\",\"<object>\"]",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "service_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": " (This can only be one of zohosign)"
+                },
+                {
+                  "key": "test_mode",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c0943978-0adb-49aa-a656-f56dddd6fc2a",
+              "name": "Bulk merge and sign job initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "bulkmerge",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "template_id",
+                      "description": "(Required) Unique identifier for the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "signer_data",
+                      "value": "[\"<object>\",\"<object>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": " (This can only be one of zohosign)",
+                        "type": "text/plain"
+                      },
+                      "key": "service_name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "test_mode",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merge_report_data_url\": \"https://DaWPwOvxB.ijujTFEV.sPc1MldU5luASljyJLxx,xM4l4ZZuSFuIGpZrN5C,D.LzDquJOtoG\",\n  \"merge_report_url\": \"http://flVfP.hffNNT5s1ReRd5ZFcigTDErdktC47wX\",\n  \"status\": \"inprogress\",\n  \"records\": [\n    {\n      \"data\": {},\n      \"download_link\": \"https://DHcJAQnxp.eqdrt-dtGjbfKRqUnQ\",\n      \"document_id\": \"string\",\n      \"document_url\": \"https://uzCywfXLvfpqiVBMKoI.wmfb+sJYcxG7\",\n      \"status\": \"completed\"\n    },\n    {\n      \"data\": {},\n      \"download_link\": \"http://QtpEUnnqVgH.pgcUoGfLHRteXzU+9keUgrT4eN\",\n      \"document_id\": \"string\",\n      \"document_url\": \"http://GzXqYAQgZlzr.vlqZm4za-zztZgwiEHBUypC\",\n      \"status\": \"failed\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.zohoapis.com/writer/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3f18af57-cc44-4af8-8faa-1e945d980b70",
+    "name": "Zoho Writer Combine Signatures API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.\n\nContact Support:\n Name: Zoho Writer Support\n Email: support@zohowriter.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoho Writer Combine API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+      "accessTokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Combine",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Combine PDF documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.zohoapis.com/writer/api/v1/documents/pdf/combine",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "files",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "urls",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "output_settings",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "input_options",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "team_id",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://accounts.zoho.com/oauth/v2/auth",
+              "accessTokenUrl": "https://accounts.zoho.com/oauth/v2/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Combine 2–20 PDF documents (local files or public URLs) into a single PDF. Returns a status URL to poll for the combined file download link."
+        },
+        {
+          "info": {
+            "name": "Get combine job status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.zohoapis.com/writer/api/v1/documents/pdf/combine/job/:job_id",
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path",
+                "description": "The combine job identifier"
+              }
+            ]
+          },
+          "docs": "Poll for the status of a PDF combine job. Returns a download link when complete."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

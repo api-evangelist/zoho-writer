@@ -1,0 +1,1472 @@
+{
+  "item": [
+    {
+      "id": "9fcdd304-0ff6-4dc7-8aa4-0fab8ed1252d",
+      "name": "Merge",
+      "description": {
+        "content": "Mail-merge operations: merge to bytes, link, store, invoke, or sign",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e27e104f-2861-4eb8-a089-752402e64c5e",
+          "name": "Merge document",
+          "request": {
+            "name": "Merge document",
+            "description": {
+              "content": "Merge a document with data and return the merged file directly as bytes or as a download URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document_id",
+                "merge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document_id",
+                  "description": "(Required) Unique identifier for the Writer document"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "output_settings",
+                  "value": "{\"format\":\"<string>\",\"password\":\"<string>\",\"restricted_access\":{\"password\":\"<string>\",\"permissions\":[\"<string>\",\"<string>\"]}}",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "merge_data",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": "Direct JSON merge data"
+                },
+                {
+                  "key": "merge_data_csv_content",
+                  "type": "file",
+                  "description": "CSV file upload"
+                },
+                {
+                  "key": "merge_data_json_content",
+                  "type": "file",
+                  "description": "JSON file upload"
+                },
+                {
+                  "key": "merge_data_csv_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": "URL to CSV file"
+                },
+                {
+                  "key": "merge_data_json_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": "URL to JSON file"
+                },
+                {
+                  "key": "record_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "For Zoho CRM/Creator/Bigin templates"
+                },
+                {
+                  "key": "response_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Set to 'link' to receive a download URL instead of bytes (This can only be one of link)"
+                },
+                {
+                  "key": "filename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Document name without extension"
+                },
+                {
+                  "key": "sign_service_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Third-party signing service (PDF only) (This can only be one of adobesign,docusign)"
+                },
+                {
+                  "key": "test_mode",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Testing mode; does not consume credits (50 merges/day limit)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8d6e3d84-6bab-4044-a5a6-c1b4f95b4b2c",
+              "name": "Merged document as binary or link",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document_id",
+                    "merge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "output_settings",
+                      "value": "{\"format\":\"<string>\",\"password\":\"<string>\",\"restricted_access\":{\"password\":\"<string>\",\"permissions\":[\"<string>\",\"<string>\"]}}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Direct JSON merge data",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "CSV file upload",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "JSON file upload",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to CSV file",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "URL to JSON file",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "For Zoho CRM/Creator/Bigin templates",
+                        "type": "text/plain"
+                      },
+                      "key": "record_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Set to 'link' to receive a download URL instead of bytes (This can only be one of link)",
+                        "type": "text/plain"
+                      },
+                      "key": "response_type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Document name without extension",
+                        "type": "text/plain"
+                      },
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Third-party signing service (PDF only) (This can only be one of adobesign,docusign)",
+                        "type": "text/plain"
+                      },
+                      "key": "sign_service_name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Testing mode; does not consume credits (50 merges/day limit)",
+                        "type": "text/plain"
+                      },
+                      "key": "test_mode",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"URL\": \"http://rjySLVdKkatTirln.jguHs1r,Q21X21.Ou,wNKoYOipO90lrcufUlL\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a0dc171-e667-4be9-8b48-bd4151c70e38",
+          "name": "Merge and sign",
+          "request": {
+            "name": "Merge and sign",
+            "description": {
+              "content": "Merge a document with data and send the result for electronic signature collection via Zoho Sign.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document_id",
+                "merge",
+                "sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document_id",
+                  "description": "(Required) Unique identifier for the Writer document"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "service_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Signing service provider (This can only be one of zohosign)"
+                },
+                {
+                  "key": "filename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Name for the signed document"
+                },
+                {
+                  "key": "merge_data",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "record_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "signer_data",
+                  "value": "[\"<object>\",\"<object>\"]",
+                  "type": "text",
+                  "description": "Array of signer details including action types and verification"
+                },
+                {
+                  "key": "sign_in_order",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "Enforce signing sequence"
+                },
+                {
+                  "key": "message",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Message for signers"
+                },
+                {
+                  "key": "set_expire",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Expiration in days (max 99)"
+                },
+                {
+                  "key": "reminder_period",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Reminder interval in days"
+                },
+                {
+                  "key": "common_attachments",
+                  "type": "file",
+                  "description": "Shared attachments (max 20 files, 40 MB total)"
+                },
+                {
+                  "key": "test_mode",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4cc59623-507e-46ea-95a2-4f0745c97a43",
+              "name": "Merge and sign job details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document_id",
+                    "merge",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Signing service provider (This can only be one of zohosign)",
+                        "type": "text/plain"
+                      },
+                      "key": "service_name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "(Required) Name for the signed document",
+                        "type": "text/plain"
+                      },
+                      "key": "filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "record_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Array of signer details including action types and verification",
+                        "type": "text/plain"
+                      },
+                      "key": "signer_data",
+                      "value": "[\"<object>\",\"<object>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Enforce signing sequence",
+                        "type": "text/plain"
+                      },
+                      "key": "sign_in_order",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Message for signers",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Expiration in days (max 99)",
+                        "type": "text/plain"
+                      },
+                      "key": "set_expire",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Reminder interval in days",
+                        "type": "text/plain"
+                      },
+                      "key": "reminder_period",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Shared attachments (max 20 files, 40 MB total)",
+                        "type": "text/plain"
+                      },
+                      "key": "common_attachments",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "test_mode",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merge_report_url\": \"http://ffGqjePKWovWXkKEJTV.jzPKJB1buBGPhPo5AGTrKbq0P5.U+xhctIjCYyPxcR05HAF6pw1\",\n  \"records\": [\n    {\n      \"sign_request_id\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"sign_request_id\": \"string\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73e36160-a2db-4587-8b4f-fd04a301cda0",
+          "name": "Merge and invoke",
+          "request": {
+            "name": "Merge and invoke",
+            "description": {
+              "content": "Trigger a merge operation programmatically and track status asynchronously.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                ":document_id",
+                "merge",
+                "execute"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document_id",
+                  "description": "(Required) Unique identifier for the Writer document"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "merge_data",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "record_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "output_settings",
+                  "value": "{\"format\":\"<string>\",\"password\":\"<string>\",\"merge_to\":\"<string>\",\"filename\":\"<string>\",\"restricted_access\":\"<object>\"}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "test_mode",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6b654cdc-143c-46e2-b586-1b9c29bee794",
+              "name": "Merge job initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    ":document_id",
+                    "merge",
+                    "execute"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "record_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "output_settings",
+                      "value": "{\"format\":\"<string>\",\"password\":\"<string>\",\"merge_to\":\"<string>\",\"filename\":\"<string>\",\"restricted_access\":\"<object>\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "test_mode",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merge_report_data_url\": \"https://RrT.hmnt0h-6-wgdgprOIrMTiCULEXD76Hwp-hYXOVpA7oMsu-HWJrlGhesrKds7NIyDjgRL.CE\",\n  \"merge_report_url\": \"https://TWUgNdZs.vbFP01jj50N7aysEMk,XQMWEDRLLhTYamJGUksanI-Qv7jzux.Yy2blORFL\",\n  \"status\": \"completed\",\n  \"records\": [\n    {\n      \"data\": {},\n      \"download_link\": \"https://bVOkAzZEvgfTfMezrdOixl.wwknnrpSGCeTyoTf1rqmb.S+KCoF0\",\n      \"document_id\": \"string\",\n      \"document_url\": \"http://GLZxMpijlXvkyLFybmABkZ.ysck,v7df9q5WcYcpKAb7froyMD\",\n      \"status\": \"completed\"\n    },\n    {\n      \"data\": {},\n      \"download_link\": \"http://LCAIkEeHoHdBGcJcqf.zjqha\",\n      \"document_id\": \"string\",\n      \"document_url\": \"https://ZQSGZX.wqfvsdedPH6G.F+j9,At,.Dm1v8NvYCkq5R.uAkXhgy39bp9icynzTNuThyT\",\n      \"status\": \"failed\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5daddf58-b62e-4071-baa1-352068dfecb8",
+          "name": "Merge and store (v2)",
+          "request": {
+            "name": "Merge and store (v2)",
+            "description": {
+              "content": "Merge a document with data and store the resulting files in a specified Zoho WorkDrive folder. Supports webhooks for async status notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                "v2",
+                ":document_id",
+                "merge",
+                "store"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "document_id",
+                  "description": "(Required) Unique identifier for the Writer document"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "output_settings",
+                  "value": "{\"doc_name\":\"<string>\",\"folder_id\":\"<string>\",\"format\":\"zdoc\",\"password\":\"<string>\",\"overwrite_existing_file\":\"<boolean>\",\"merge_to\":\"separatedoc\",\"sign_service_name\":\"<string>\",\"restricted_access\":\"<object>\"}",
+                  "type": "text",
+                  "description": "(Required) "
+                },
+                {
+                  "key": "merge_data",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "record_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "test_mode",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "webhook_info",
+                  "value": "{\"url\":\"<uri>\",\"retry\":\"<integer>\",\"timeout\":\"<integer>\",\"expiry_date\":\"<string>\",\"context\":\"<object>\"}",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c7327bbb-0c6c-4b39-a6c9-bb0e50db46b9",
+              "name": "Merge and store job initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    "v2",
+                    ":document_id",
+                    "merge",
+                    "store"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "document_id",
+                      "description": "(Required) Unique identifier for the Writer document"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "output_settings",
+                      "value": "{\"doc_name\":\"<string>\",\"folder_id\":\"<string>\",\"format\":\"zdoc\",\"password\":\"<string>\",\"overwrite_existing_file\":\"<boolean>\",\"merge_to\":\"separatedoc\",\"sign_service_name\":\"<string>\",\"restricted_access\":\"<object>\"}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "record_id",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "test_mode",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "webhook_info",
+                      "value": "{\"url\":\"<uri>\",\"retry\":\"<integer>\",\"timeout\":\"<integer>\",\"expiry_date\":\"<string>\",\"context\":\"<object>\"}",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merge_report_data_url\": \"https://FAukVwLObdHimoyWhANrexGHCWkCXaM.ldejFfuDCzHWwiR+IDFOGHmJhOF7i-aWnPrMEajxKwq0IiNlWRB38Ci5Q4Zvmc2djGsFQy\",\n  \"merge_report_url\": \"http://gaoeIKQSCQIGQpfqcLqrRWIqR.ltaaou-P5bRQBsWVq61mOvwwF+AQVM-izG2wg1Sni+e\",\n  \"status\": \"inprogress\",\n  \"records\": [\n    {\n      \"data\": {},\n      \"download_link\": \"http://FYHsyhxbmSJfg.eaizZofRPb2Dwam\",\n      \"document_id\": \"string\",\n      \"document_url\": \"http://MujRMglEAXA.slakpWAyKUr3YsAvuw6tbbu+v9D,wNzfJKC+mIe8-bmwBBKbkCwvnbZ8ZPUMy0\",\n      \"status\": \"completed\"\n    },\n    {\n      \"data\": {},\n      \"download_link\": \"http://EEfxPryRbXPnPcXjNvuuiRTXaSsYXjtFx.viyE-jM0tS1RMMuPmltuWex1VnZsMFWtImcrzeqSpbjuzRn,tqBdm5CC.hQXZRL,Ki1.L3HVE1\",\n      \"document_id\": \"string\",\n      \"document_url\": \"http://ZrloCfGvgbAZMKnlGqJvpSF.jvjNHtw7V7k-5qJD.xI36gIlW.dH1eflFMOiCYzER20erhOS6\",\n      \"status\": \"failed\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4259d599-0e3b-42d5-b513-eefe66e41aae",
+          "name": "Bulk merge and sign",
+          "request": {
+            "name": "Bulk merge and sign",
+            "description": {
+              "content": "Perform bulk merge and sign operations using a template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "templates",
+                ":template_id",
+                "bulkmerge",
+                "sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "template_id",
+                  "description": "(Required) Unique identifier for the template"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "merge_data",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_content",
+                  "type": "file",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_csv_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "merge_data_json_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "signer_data",
+                  "value": "[\"<object>\",\"<object>\"]",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "service_name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": " (This can only be one of zohosign)"
+                },
+                {
+                  "key": "test_mode",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e6fd1bf6-b3d5-44a8-ba48-096276c7d89c",
+              "name": "Bulk merge and sign job initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "templates",
+                    ":template_id",
+                    "bulkmerge",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "template_id",
+                      "description": "(Required) Unique identifier for the template"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_content",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_csv_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "merge_data_json_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "signer_data",
+                      "value": "[\"<object>\",\"<object>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": " (This can only be one of zohosign)",
+                        "type": "text/plain"
+                      },
+                      "key": "service_name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "test_mode",
+                      "value": "<boolean>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"merge_report_data_url\": \"https://FAukVwLObdHimoyWhANrexGHCWkCXaM.ldejFfuDCzHWwiR+IDFOGHmJhOF7i-aWnPrMEajxKwq0IiNlWRB38Ci5Q4Zvmc2djGsFQy\",\n  \"merge_report_url\": \"http://gaoeIKQSCQIGQpfqcLqrRWIqR.ltaaou-P5bRQBsWVq61mOvwwF+AQVM-izG2wg1Sni+e\",\n  \"status\": \"inprogress\",\n  \"records\": [\n    {\n      \"data\": {},\n      \"download_link\": \"http://FYHsyhxbmSJfg.eaizZofRPb2Dwam\",\n      \"document_id\": \"string\",\n      \"document_url\": \"http://MujRMglEAXA.slakpWAyKUr3YsAvuw6tbbu+v9D,wNzfJKC+mIe8-bmwBBKbkCwvnbZ8ZPUMy0\",\n      \"status\": \"completed\"\n    },\n    {\n      \"data\": {},\n      \"download_link\": \"http://EEfxPryRbXPnPcXjNvuuiRTXaSsYXjtFx.viyE-jM0tS1RMMuPmltuWex1VnZsMFWtImcrzeqSpbjuzRn,tqBdm5CC.hQXZRL,Ki1.L3HVE1\",\n      \"document_id\": \"string\",\n      \"document_url\": \"http://ZrloCfGvgbAZMKnlGqJvpSF.jvjNHtw7V7k-5qJD.xI36gIlW.dH1eflFMOiCYzER20erhOS6\",\n      \"status\": \"failed\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.zohoapis.com/writer/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d935daa3-c103-4b23-adc5-db900afc57ac",
+    "name": "Zoho Writer Combine Merge API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.\n\nContact Support:\n Name: Zoho Writer Support\n Email: support@zohowriter.com",
+      "type": "text/plain"
+    }
+  }
+}

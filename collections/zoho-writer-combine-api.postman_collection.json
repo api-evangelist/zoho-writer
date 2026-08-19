@@ -1,0 +1,345 @@
+{
+  "item": [
+    {
+      "id": "29caca45-25fa-42d1-bfb6-817e244f520b",
+      "name": "Combine",
+      "description": {
+        "content": "Combine multiple PDF documents into one",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75a83702-d72d-4643-bacd-396f04bbd631",
+          "name": "Combine PDF documents",
+          "request": {
+            "name": "Combine PDF documents",
+            "description": {
+              "content": "Combine 2–20 PDF documents (local files or public URLs) into a single PDF. Returns a status URL to poll for the combined file download link.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                "pdf",
+                "combine"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "files",
+                  "value": "[\"<binary>\",\"<binary>\"]",
+                  "type": "text",
+                  "description": "PDF files to combine (min 2, max 20, each up to 10 MB)"
+                },
+                {
+                  "key": "urls",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Comma-separated public URLs to PDF files"
+                },
+                {
+                  "key": "output_settings",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": "Configure merged file naming and page numbering with headers/footers"
+                },
+                {
+                  "key": "input_options",
+                  "value": "<object>",
+                  "type": "text",
+                  "description": "Specify page ranges or individual pages per document"
+                },
+                {
+                  "key": "team_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "WorkDrive team ID for credit usage"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "628bf00d-32e8-4f33-aecc-8756c4a877d9",
+              "name": "Combine job initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    "pdf",
+                    "combine"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "PDF files to combine (min 2, max 20, each up to 10 MB)",
+                        "type": "text/plain"
+                      },
+                      "key": "files",
+                      "value": "[\"<binary>\",\"<binary>\"]",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Comma-separated public URLs to PDF files",
+                        "type": "text/plain"
+                      },
+                      "key": "urls",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Configure merged file naming and page numbering with headers/footers",
+                        "type": "text/plain"
+                      },
+                      "key": "output_settings",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Specify page ranges or individual pages per document",
+                        "type": "text/plain"
+                      },
+                      "key": "input_options",
+                      "value": "<object>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "WorkDrive team ID for credit usage",
+                        "type": "text/plain"
+                      },
+                      "key": "team_id",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status_url\": \"http://KOQXbjJMgHwSnJajYeKKlwDR.wseAIhBFUDYLyNT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74f0dcdb-0b6c-494c-933e-2dd43ad630c2",
+          "name": "Get combine job status",
+          "request": {
+            "name": "Get combine job status",
+            "description": {
+              "content": "Poll for the status of a PDF combine job. Returns a download link when complete.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "documents",
+                "pdf",
+                "combine",
+                "job",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "job_id",
+                  "description": "(Required) The combine job identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b92cba46-86d0-4ab8-a858-508b6f2b094e",
+              "name": "Job status and download link",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "documents",
+                    "pdf",
+                    "combine",
+                    "job",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "job_id",
+                      "description": "(Required) The combine job identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"completed\",\n  \"download_link\": \"http://jlXzQZzRDQcmlaLGHrhkYvSRBmvke.vakzFb15wovPe3m2FKVQmKQg9P6HiTyFQLMggFV3stDlxX5ogm2WSiSwoq7aWjNu2GP2wETSPfqv\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.zohoapis.com/writer/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ZohoWriter.documentEditor.ALL ZohoWriter.merge.ALL ZohoPC.files.ALL WorkDrive.files.ALL WorkDrive.organization.ALL WorkDrive.workspace.ALL"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "af5102f3-9db2-47ed-b7e6-30a209dadc04",
+    "name": "Zoho Writer Combine API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.\n\nContact Support:\n Name: Zoho Writer Support\n Email: support@zohowriter.com",
+      "type": "text/plain"
+    }
+  }
+}
