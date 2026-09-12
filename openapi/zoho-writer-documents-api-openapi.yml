@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Zoho Writer Combine Documents API
   description: REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.
@@ -293,29 +293,6 @@ paths:
         url: https://www.zoho.com/writer/help/api/v1/download-document.html
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error_code:
-          type: string
-        message:
-          type: string
-    Permissions:
-      type: object
-      properties:
-        can_edit:
-          type: boolean
-        can_share:
-          type: boolean
-        can_delete:
-          type: boolean
-    ParentInfo:
-      type: object
-      properties:
-        folder_id:
-          type: string
-        folder_name:
-          type: string
     UserInfo:
       type: object
       properties:
@@ -329,42 +306,6 @@ components:
         profile_photo:
           type: string
           format: uri
-    DocumentMetrics:
-      type: object
-      properties:
-        comments_metrics:
-          type: object
-          properties:
-            total_count:
-              type: integer
-            unresolved_count:
-              type: integer
-            resolved_count:
-              type: integer
-        content_metrics:
-          type: object
-          properties:
-            sentences:
-              type: integer
-            characters:
-              type: integer
-            words:
-              type: integer
-            characters_without_whitespaces:
-              type: integer
-        tracked_changes_metrics:
-          type: object
-          properties:
-            all_changes:
-              type: integer
-            insertions:
-              type: integer
-            deletions:
-              type: integer
-            replacements:
-              type: integer
-            fields_updated:
-              type: integer
     DocumentSummary:
       type: object
       properties:
@@ -405,6 +346,42 @@ components:
         published_url:
           type: string
           format: uri
+    DocumentMetrics:
+      type: object
+      properties:
+        comments_metrics:
+          type: object
+          properties:
+            total_count:
+              type: integer
+            unresolved_count:
+              type: integer
+            resolved_count:
+              type: integer
+        content_metrics:
+          type: object
+          properties:
+            sentences:
+              type: integer
+            characters:
+              type: integer
+            words:
+              type: integer
+            characters_without_whitespaces:
+              type: integer
+        tracked_changes_metrics:
+          type: object
+          properties:
+            all_changes:
+              type: integer
+            insertions:
+              type: integer
+            deletions:
+              type: integer
+            replacements:
+              type: integer
+            fields_updated:
+              type: integer
     DocumentDetails:
       allOf:
       - $ref: '#/components/schemas/DocumentSummary'
@@ -448,6 +425,29 @@ components:
             type: string
           status:
             type: string
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
+    ParentInfo:
+      type: object
+      properties:
+        folder_id:
+          type: string
+        folder_name:
+          type: string
+    Permissions:
+      type: object
+      properties:
+        can_edit:
+          type: boolean
+        can_share:
+          type: boolean
+        can_delete:
+          type: boolean
   securitySchemes:
     OAuth2:
       type: oauth2
