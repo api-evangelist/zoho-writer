@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Zoho Writer Combine Signatures API
+  title: Zoho Writer Signatures API
   description: REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.
   version: 1.0.0
   contact:

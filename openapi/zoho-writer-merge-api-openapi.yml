@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Zoho Writer Combine Merge API
+  title: Zoho Writer Merge API
   description: REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.
   version: 1.0.0
   contact:
@@ -474,25 +474,6 @@ paths:
         url: https://www.zoho.com/writer/help/api/v1/bulkmerge-sign.html
 components:
   schemas:
-    MergeResponse:
-      type: object
-      properties:
-        merge_report_data_url:
-          type: string
-          format: uri
-        merge_report_url:
-          type: string
-          format: uri
-        status:
-          type: string
-          enum:
-          - inprogress
-          - completed
-          - failed
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/MergeRecord'
     OutputSettings:
       type: object
       required:
@@ -521,6 +502,25 @@ components:
               type: array
               items:
                 type: string
+    MergeResponse:
+      type: object
+      properties:
+        merge_report_data_url:
+          type: string
+          format: uri
+        merge_report_url:
+          type: string
+          format: uri
+        status:
+          type: string
+          enum:
+          - inprogress
+          - completed
+          - failed
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/MergeRecord'
     MergeRecord:
       type: object
       properties:

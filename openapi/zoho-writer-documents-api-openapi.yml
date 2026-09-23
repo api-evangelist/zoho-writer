@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Zoho Writer Combine Documents API
+  title: Zoho Writer Documents API
   description: REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports Document, Combine, Merge, and Sign API categories with OAuth 2.0 authentication.
   version: 1.0.0
   contact:
@@ -293,19 +293,6 @@ paths:
         url: https://www.zoho.com/writer/help/api/v1/download-document.html
 components:
   schemas:
-    UserInfo:
-      type: object
-      properties:
-        email_id:
-          type: string
-          format: email
-        user_id:
-          type: string
-        display_name:
-          type: string
-        profile_photo:
-          type: string
-          format: uri
     DocumentSummary:
       type: object
       properties:
@@ -425,6 +412,28 @@ components:
             type: string
           status:
             type: string
+    UserInfo:
+      type: object
+      properties:
+        email_id:
+          type: string
+          format: email
+        user_id:
+          type: string
+        display_name:
+          type: string
+        profile_photo:
+          type: string
+          format: uri
+    Permissions:
+      type: object
+      properties:
+        can_edit:
+          type: boolean
+        can_share:
+          type: boolean
+        can_delete:
+          type: boolean
     Error:
       type: object
       properties:
@@ -439,15 +448,6 @@ components:
           type: string
         folder_name:
           type: string
-    Permissions:
-      type: object
-      properties:
-        can_edit:
-          type: boolean
-        can_share:
-          type: boolean
-        can_delete:
-          type: boolean
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,10 +1,7 @@
 {
   "provider": "zoho-writer",
   "sources": [
-    "zoho-writer-combine-api-openapi.yml",
-    "zoho-writer-documents-api-openapi.yml",
-    "zoho-writer-merge-api-openapi.yml",
-    "zoho-writer-signatures-api-openapi.yml"
+    "_original/zoho-writer-openapi.json"
   ],
   "outputs": [
     "zoho-writer-combine-api-openapi.yml",
@@ -16,11 +13,14 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "zoho-writer-combine-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "zoho-writer-documents-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "zoho-writer-merge-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "zoho-writer-signatures-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "zoho-writer-openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "zoho-writer-combine-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoho-writer-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoho-writer-merge-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "zoho-writer-signatures-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
