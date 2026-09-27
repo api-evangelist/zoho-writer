@@ -293,6 +293,19 @@ paths:
         url: https://www.zoho.com/writer/help/api/v1/download-document.html
 components:
   schemas:
+    UserInfo:
+      type: object
+      properties:
+        email_id:
+          type: string
+          format: email
+        user_id:
+          type: string
+        display_name:
+          type: string
+        profile_photo:
+          type: string
+          format: uri
     DocumentSummary:
       type: object
       properties:
@@ -333,42 +346,22 @@ components:
         published_url:
           type: string
           format: uri
-    DocumentMetrics:
+    ParentInfo:
       type: object
       properties:
-        comments_metrics:
-          type: object
-          properties:
-            total_count:
-              type: integer
-            unresolved_count:
-              type: integer
-            resolved_count:
-              type: integer
-        content_metrics:
-          type: object
-          properties:
-            sentences:
-              type: integer
-            characters:
-              type: integer
-            words:
-              type: integer
-            characters_without_whitespaces:
-              type: integer
-        tracked_changes_metrics:
-          type: object
-          properties:
-            all_changes:
-              type: integer
-            insertions:
-              type: integer
-            deletions:
-              type: integer
-            replacements:
-              type: integer
-            fields_updated:
-              type: integer
+        folder_id:
+          type: string
+        folder_name:
+          type: string
+    Permissions:
+      type: object
+      properties:
+        can_edit:
+          type: boolean
+        can_share:
+          type: boolean
+        can_delete:
+          type: boolean
     DocumentDetails:
       allOf:
       - $ref: '#/components/schemas/DocumentSummary'
@@ -412,41 +405,48 @@ components:
             type: string
           status:
             type: string
-    UserInfo:
+    DocumentMetrics:
       type: object
       properties:
-        email_id:
-          type: string
-          format: email
-        user_id:
-          type: string
-        display_name:
-          type: string
-        profile_photo:
-          type: string
-          format: uri
-    Permissions:
-      type: object
-      properties:
-        can_edit:
-          type: boolean
-        can_share:
-          type: boolean
-        can_delete:
-          type: boolean
+        comments_metrics:
+          type: object
+          properties:
+            total_count:
+              type: integer
+            unresolved_count:
+              type: integer
+            resolved_count:
+              type: integer
+        content_metrics:
+          type: object
+          properties:
+            sentences:
+              type: integer
+            characters:
+              type: integer
+            words:
+              type: integer
+            characters_without_whitespaces:
+              type: integer
+        tracked_changes_metrics:
+          type: object
+          properties:
+            all_changes:
+              type: integer
+            insertions:
+              type: integer
+            deletions:
+              type: integer
+            replacements:
+              type: integer
+            fields_updated:
+              type: integer
     Error:
       type: object
       properties:
         error_code:
           type: string
         message:
-          type: string
-    ParentInfo:
-      type: object
-      properties:
-        folder_id:
-          type: string
-        folder_name:
           type: string
   securitySchemes:
     OAuth2:

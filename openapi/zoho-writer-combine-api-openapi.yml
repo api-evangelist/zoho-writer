@@ -109,13 +109,6 @@ paths:
                 $ref: '#/components/schemas/CombineStatusResponse'
 components:
   schemas:
-    CombineJobResponse:
-      type: object
-      properties:
-        status_url:
-          type: string
-          format: uri
-          description: URL to poll for job status
     CombineStatusResponse:
       type: object
       properties:
@@ -128,6 +121,13 @@ components:
         download_link:
           type: string
           format: uri
+    CombineJobResponse:
+      type: object
+      properties:
+        status_url:
+          type: string
+          format: uri
+          description: URL to poll for job status
   securitySchemes:
     OAuth2:
       type: oauth2
