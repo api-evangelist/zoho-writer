@@ -293,19 +293,6 @@ paths:
         url: https://www.zoho.com/writer/help/api/v1/download-document.html
 components:
   schemas:
-    UserInfo:
-      type: object
-      properties:
-        email_id:
-          type: string
-          format: email
-        user_id:
-          type: string
-        display_name:
-          type: string
-        profile_photo:
-          type: string
-          format: uri
     DocumentSummary:
       type: object
       properties:
@@ -346,6 +333,62 @@ components:
         published_url:
           type: string
           format: uri
+    UserInfo:
+      type: object
+      properties:
+        email_id:
+          type: string
+          format: email
+        user_id:
+          type: string
+        display_name:
+          type: string
+        profile_photo:
+          type: string
+          format: uri
+    DocumentMetrics:
+      type: object
+      properties:
+        comments_metrics:
+          type: object
+          properties:
+            total_count:
+              type: integer
+            unresolved_count:
+              type: integer
+            resolved_count:
+              type: integer
+        content_metrics:
+          type: object
+          properties:
+            sentences:
+              type: integer
+            characters:
+              type: integer
+            words:
+              type: integer
+            characters_without_whitespaces:
+              type: integer
+        tracked_changes_metrics:
+          type: object
+          properties:
+            all_changes:
+              type: integer
+            insertions:
+              type: integer
+            deletions:
+              type: integer
+            replacements:
+              type: integer
+            fields_updated:
+              type: integer
+    Error:
+      type: object
+      properties:
+        error_code:
+          type: string
+        message:
+          type: string
     ParentInfo:
       type: object
       properties:
@@ -405,49 +448,6 @@ components:
             type: string
           status:
             type: string
-    DocumentMetrics:
-      type: object
-      properties:
-        comments_metrics:
-          type: object
-          properties:
-            total_count:
-              type: integer
-            unresolved_count:
-              type: integer
-            resolved_count:
-              type: integer
-        content_metrics:
-          type: object
-          properties:
-            sentences:
-              type: integer
-            characters:
-              type: integer
-            words:
-              type: integer
-            characters_without_whitespaces:
-              type: integer
-        tracked_changes_metrics:
-          type: object
-          properties:
-            all_changes:
-              type: integer
-            insertions:
-              type: integer
-            deletions:
-              type: integer
-            replacements:
-              type: integer
-            fields_updated:
-              type: integer
-    Error:
-      type: object
-      properties:
-        error_code:
-          type: string
-        message:
-          type: string
   securitySchemes:
     OAuth2:
       type: oauth2
