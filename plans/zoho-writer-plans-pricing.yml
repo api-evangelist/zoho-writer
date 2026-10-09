@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Zoho Writer Plans and Pricing
 description: Pricing plans and subscription tiers for Zoho Writer and its Automation Add-On
 url: https://www.zoho.com/writer/
@@ -87,3 +91,35 @@ notes:
   - Zoho Writer is not sold as a standalone API product; API access is bundled with Writer subscriptions.
   - Automation credits (for merge, sign, generate) are the primary API cost driver.
   - Enterprise pricing available via direct sales contact.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Free (Included with Zoho One / WorkDrive)
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Writer Pro (Standalone)
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Automation Add-On - Fixed Plan
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Automation Add-On - Flexible Plan
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []

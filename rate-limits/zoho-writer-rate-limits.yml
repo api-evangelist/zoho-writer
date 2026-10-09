@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Zoho Writer API Rate Limits
 description: Threshold limits and cooling periods for Zoho Writer REST API categories
 url: https://www.zoho.com/writer/help/api/v1/writer-apis-threshold-limits.html
