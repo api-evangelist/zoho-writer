@@ -2,16 +2,16 @@
 kin_checks:
   slug: zoho-writer
   schema_version: 0.23.0
-  scored_at: '2026-10-03'
-  run_ts: 2026-10-03T024842
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.23.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 153
-    earned: 23
+    earned: 24
     partial: 26
-    missed: 77
+    missed: 76
     na: 27
   checks:
   - id: newsroom_present
@@ -104,8 +104,6 @@ kin_checks:
   - id: terms_of_service
     status: missed
   - id: privacy_policy
-    status: missed
-  - id: finops_mapped
     status: missed
   - id: compliance_published
     status: missed
