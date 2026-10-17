@@ -343,28 +343,13 @@ components:
             type: string
           status:
             type: string
-    UserInfo:
+    ParentInfo:
       type: object
       properties:
-        email_id:
+        folder_id:
           type: string
-          format: email
-        user_id:
+        folder_name:
           type: string
-        display_name:
-          type: string
-        profile_photo:
-          type: string
-          format: uri
-    Permissions:
-      type: object
-      properties:
-        can_edit:
-          type: boolean
-        can_share:
-          type: boolean
-        can_delete:
-          type: boolean
     DocumentMetrics:
       type: object
       properties:
@@ -401,13 +386,6 @@ components:
               type: integer
             fields_updated:
               type: integer
-    ParentInfo:
-      type: object
-      properties:
-        folder_id:
-          type: string
-        folder_name:
-          type: string
     DocumentSummary:
       type: object
       properties:
@@ -448,6 +426,28 @@ components:
         published_url:
           type: string
           format: uri
+    UserInfo:
+      type: object
+      properties:
+        email_id:
+          type: string
+          format: email
+        user_id:
+          type: string
+        display_name:
+          type: string
+        profile_photo:
+          type: string
+          format: uri
+    Permissions:
+      type: object
+      properties:
+        can_edit:
+          type: boolean
+        can_share:
+          type: boolean
+        can_delete:
+          type: boolean
   securitySchemes:
     OAuth2:
       type: oauth2
