@@ -43,7 +43,7 @@ tags:
   - Word Processor
   - Mail Merge
   - Document Generation
-  - Electronic Signature
+  - E-Signature
   - Zoho
   - Office Suite
   - Automation
@@ -56,6 +56,7 @@ tags_raw:
   - Zoho
   - Office Suite
   - Automation
+  - Electronic Signature
 apis:
 - aid: zoho-writer:zoho-writer-api
   name: Zoho Writer API
