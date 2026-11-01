@@ -64,44 +64,150 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Zoho Writer is an online word processor with a REST API for creating, editing, merging, converting, and signing documents, and automating document workflows within the Zoho ecosystem.
+Zoho Writer is an online word processor with a REST API for creating, editing, merging, converting, and signing documents, and automating document workflows within the Zoho ecosystem. The API supports document CRUD operations, mail merge with templates, fillable forms, electronic signatures via Zoho Sign integration, webhook-triggered automation, and multi-format document export (PDF, DOCX, HTML). OAuth 2.0 authentication is used with domain-specific base URLs across global data centers.
 
-## API Capabilities
+**Areas:** Documents · Word Processor · Mail Merge · Document Generation · E-Signature · Zoho · Office Suite · Automation
 
-- **Document APIs** — Create, retrieve, update, download, and share documents
-- **Meta APIs** — Retrieve document and template metadata
-- **Combine APIs** — Merge multiple documents into one
-- **Merge APIs** — Mail merge using templates with data sources; supports Merge and Email
-- **Sign APIs** — Trigger electronic signature workflows via Zoho Sign integration
-- **Webhooks** — Automate document generation from third-party application events
+## Zoho Writer on APIs.io
 
-## Authentication
+Everything profiled for Zoho Writer is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/zoho-writer/](https://apis.io/providers/zoho-writer/)** — or go straight to one of the APIs or properties below.
 
-OAuth 2.0 with scopes such as `ZohoWriter.documentEditor.ALL` and `ZohoWriter.merge.ALL`. Access tokens are valid for one hour; refresh tokens have unlimited lifetime. Register applications at the [Zoho Developer Console](https://accounts.zoho.com/developerconsole).
+### APIs (5)
 
-## Data Centers
+- [Zoho Writer API](https://apis.io/apis/zoho-writer/zoho-writer-api/) — REST API for programmatic document creation, editing, mail merge, electronic signing, webhook automation, and multi-format document export. Supports…
+- [Zoho Writer Combine API](https://apis.io/apis/zoho-writer/zoho-writer-combine-api/) — Combine multiple PDF documents into one
+- [Zoho Writer Documents API](https://apis.io/apis/zoho-writer/zoho-writer-documents-api/) — Create, upload, list, download, and inspect documents
+- [Zoho Writer Merge API](https://apis.io/apis/zoho-writer/zoho-writer-merge-api/) — Mail-merge operations: merge to bytes, link, store, invoke, or sign
+- [Zoho Writer Signatures API](https://apis.io/apis/zoho-writer/zoho-writer-signatures-api/) — Electronic signature workflows via Zoho Sign
 
-API base URLs are region-specific:
+### Published properties
 
-| Region | Base URL |
-|---|---|
-| United States | `https://writer.zoho.com/api/v1` |
-| Europe | `https://writer.zoho.eu/api/v1` |
-| India | `https://writer.zoho.in/api/v1` |
-| Japan | `https://writer.zoho.jp/api/v1` |
-| Australia | `https://writer.zoho.com.au/api/v1` |
-| Canada | `https://writer.zoho.ca/api/v1` |
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Resources
+#### Agentic access (1)
 
-- [Developer Portal](https://www.zoho.com/writer/developers.html)
-- [API Documentation](https://www.zoho.com/writer/help/api/v1/)
-- [OAuth 2.0 Guide](https://www.zoho.com/writer/help/api/v1/oauth-2.html)
-- [Rate Limits](https://www.zoho.com/writer/help/api/v1/writer-apis-threshold-limits.html)
-- [Pricing / Automation Credits](https://help.zoho.com/portal/en/kb/writer/writer-add-ons/pricing-faq/articles/how-can-i-purchase-the-writer-add-on)
-- [Status Page](https://status.zoho.com)
-- [What's New](https://www.zoho.com/writer/whats-new.html)
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Zoho Writer Agentic Access](https://apis.io/agentic-access/zoho-writer/zoho-writer-agentic-access/)
+
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [ZohoWriterDocument](https://apis.io/schemas/zoho-writer/document/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Zoho Writer Context](https://apis.io/jsonld/zoho-writer/zoho-writer-context/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Zoho Writer Combine API](https://apis.io/collections/zoho-writer/open-zoho-writer-combine-api/)
+- [Zoho Writer Combine Documents API](https://apis.io/collections/zoho-writer/open-zoho-writer-documents-api/)
+- [Zoho Writer Combine Merge API](https://apis.io/collections/zoho-writer/open-zoho-writer-merge-api/)
+- [Zoho Writer Combine Signatures API](https://apis.io/collections/zoho-writer/open-zoho-writer-signatures-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Zoho Writer — jsonschema rules](https://apis.io/rules/zoho-writer/zoho-writer-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Zoho Writer Authentication](https://apis.io/security/zoho-writer/zoho-writer-authentication/)
+- [Zoho Writer Domain Security](https://apis.io/security/zoho-writer/zoho-writer-domain-security/)
+- [Zoho Writer Vulnerability Disclosure](https://apis.io/security/zoho-writer/zoho-writer-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Zoho Writer Scopes](https://apis.io/scopes/zoho-writer/zoho-writer-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Zoho Writer Plans Pricing](https://apis.io/plans/zoho-writer/zoho-writer-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Zoho Writer Rate Limits](https://apis.io/rate-limits/zoho-writer/zoho-writer-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Zoho Writer Finops](https://apis.io/finops/zoho-writer/zoho-writer-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.zoho.com/writer/)
+- [Documentation](https://www.zoho.com/writer/help/api/v1/)
+- [Pricing](https://help.zoho.com/portal/en/kb/writer/writer-add-ons/pricing-faq/articles/how-can-i-purchase-the-writer-add-on)
 - [Blog](https://www.zoho.com/blog/writer/)
-- [X / Twitter](https://x.com/ZohoWriter)
-- [GitHub](https://github.com/zoho)
-- [LinkedIn](https://www.linkedin.com/company/zoho)
+- [Status](https://status.zoho.com)
+
+## API Evangelist rating
+
+**Kin Score 34.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 53.5 |
+| Contract governance | 9.8 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 18.4 |
+
+**Agent readiness 34.5** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 32.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/zoho-writer/](https://apis.io/providers/zoho-writer/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Zoho Writer: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/zoho-writer/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
